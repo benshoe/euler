@@ -5,7 +5,7 @@ public class TryoutArray implements IEulerProblem {
 
 	@Override
 	public void run() {
-		long[] primes = PrimeUtil.getPrimes(2000000);
+		long[] primes = PrimeUtil.getPrimes(200000);
 		long sum = 0;
 		for(long l : primes) {
 			//			System.out.println(l);
