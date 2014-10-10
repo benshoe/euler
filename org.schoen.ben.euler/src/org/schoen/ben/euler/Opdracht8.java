@@ -65,7 +65,6 @@ public class Opdracht8 implements IEulerProblem {
 			if(sum2 > sum) {
 				sum = sum2;
 				solution = solution2;
-				//				System.out.println(sum2);
 			}
 			startAt++;
 			finished = isOutOfBound(startAt);
@@ -76,9 +75,7 @@ public class Opdracht8 implements IEulerProblem {
 	}
 
 	private boolean isOutOfBound(int startAt) {
-		if(startAt + 13 > 1000)
-			return true;
-		return false;
+		return startAt + 13 > 1000;
 	}
 
 	private long calculateProduct(StringBuilder solution) {

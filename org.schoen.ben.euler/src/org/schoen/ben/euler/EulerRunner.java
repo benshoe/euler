@@ -11,13 +11,14 @@ public class EulerRunner {
 		m_problems.add(new Opdracht3());
 		m_problems.add(new Opdracht4());
 		m_problems.add(new Opdracht5());
-		m_problems.add(new Opdracht7());
-		m_problems.add(new Opdracht8());
-		m_problems.add(new Opdracht9());
-		m_problems.add(new Opdracht10());*/
+		m_problems.add(new Opdracht7());*/
+		//		m_problems.add(new Opdracht8());
+		//		m_problems.add(new Opdracht9());
+		//		m_problems.add(new Opdracht10());
 		//		m_problems.add(new TryoutBigInteger());
 		//		m_problems.add(new TryoutArray());
-		m_problems.add(new Opdracht11());
+		//		m_problems.add(new Opdracht11());
+		m_problems.add(new Problem12());
 	}
 
 	public static void main(String[] args) {
