@@ -18,7 +18,10 @@ public class EulerRunner {
 		//		m_problems.add(new TryoutBigInteger());
 		//		m_problems.add(new TryoutArray());
 		//		m_problems.add(new Opdracht11());
-		m_problems.add(new Problem12());
+		//		m_problems.add(new Problem12());
+		//		m_problems.add(new Problem13());
+		//		m_problems.add(new Problem14());
+		m_problems.add(new Problem15());
 	}
 
 	public static void main(String[] args) {
