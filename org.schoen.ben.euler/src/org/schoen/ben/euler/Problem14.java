@@ -17,6 +17,8 @@ package org.schoen.ben.euler;
  */
 public class Problem14 implements IEulerProblem {
 
+	private String m_answer;
+
 	@Override
 	public void run() {
 		int collatzLength = 0;
@@ -29,6 +31,7 @@ public class Problem14 implements IEulerProblem {
 			}
 		}
 		System.out.println(collatzNumber + " has Collatz length " + collatzLength);
+		m_answer = String.valueOf(collatzNumber);
 	}
 
 	private int calculateCollatzSequence(long i) {
@@ -48,7 +51,12 @@ public class Problem14 implements IEulerProblem {
 
 	@Override
 	public String getProblemName() {
-		return "Which starting number, under one million, produces the longest Collatz sequence";
+		return "Problem 14: which starting number, under one million, produces the longest Collatz sequence";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "837799".equals(m_answer);
 	}
 
 }

@@ -11,6 +11,8 @@ package org.schoen.ben.euler;
  */
 public class Opdracht3 implements IEulerProblem {
 
+	private String m_answer;
+
 	@Override
 	public void run() {
 		long value = 600851475143l;
@@ -28,12 +30,16 @@ public class Opdracht3 implements IEulerProblem {
 			}
 			startNumber -= 2;
 		}
-		if(6857 != startNumber)
-			System.out.println("WRONG WRONG WRONG WRONG WRONG ");
+		m_answer = String.valueOf(startNumber);
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 3: What is the largest prime factor of the number 600851475143 ?";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "6857".equals(m_answer);
 	}
 }

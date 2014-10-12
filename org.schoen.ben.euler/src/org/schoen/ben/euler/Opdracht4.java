@@ -11,6 +11,8 @@ package org.schoen.ben.euler;
  */
 public class Opdracht4 implements IEulerProblem {
 
+	private String m_answer;
+
 	@Override
 	public void run() {
 		int startNumber = 999 * 999;
@@ -36,7 +38,8 @@ public class Opdracht4 implements IEulerProblem {
 	private boolean hasTwoFactorsOfThreeDigits(int palindrome) {
 		for(int i = (int) Math.sqrt(palindrome); i > 99; i--) {
 			if(palindrome % i == 0 && palindrome / i > 99 & palindrome / i < 1000) {
-				System.out.println(i + " " + palindrome / i);
+				m_answer = i + " " + palindrome / i;
+				System.out.println(m_answer);
 				return true;
 			}
 		}
@@ -46,6 +49,11 @@ public class Opdracht4 implements IEulerProblem {
 	@Override
 	public String getProblemName() {
 		return "Problem 4: Find the largest palindrome made from the product of two 3-digit numbers.";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "913 993".equals(m_answer);
 	}
 
 }

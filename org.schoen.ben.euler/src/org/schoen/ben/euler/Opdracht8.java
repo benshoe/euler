@@ -44,6 +44,8 @@ public class Opdracht8 implements IEulerProblem {
 		+ "8403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646"
 		+ "710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450";
 
+	private String m_answer;
+
 	@Override
 	public void run() {
 		StringBuilder sb = new StringBuilder(thousandDigitNumber);
@@ -72,6 +74,7 @@ public class Opdracht8 implements IEulerProblem {
 		System.out.println(solution);
 		long product = calculateProduct(solution);
 		System.out.println("Het product is: " + product);
+		m_answer = String.valueOf(product);
 	}
 
 	private boolean isOutOfBound(int startAt) {
@@ -89,5 +92,10 @@ public class Opdracht8 implements IEulerProblem {
 	@Override
 	public String getProblemName() {
 		return "Problem 8: Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "23514624000".equals(m_answer);
 	}
 }

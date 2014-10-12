@@ -11,6 +11,8 @@ package org.schoen.ben.euler;
  */
 public class Problem15 implements IEulerProblem {
 
+	private String m_answer;
+
 	@Override
 	public void run() {
 		calculateGrid(21);
@@ -34,11 +36,17 @@ public class Problem15 implements IEulerProblem {
 			System.out.println();
 		}
 		System.out.println(grid);
+		m_answer = String.valueOf(grid[20][20]);
 	}
 
 	@Override
 	public String getProblemName() {
-		return "How many such routes are there through a 20×20 grid?";
+		return "Problem 15: How many such routes are there through a 20×20 grid?";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "137846528820".equals(m_answer);
 	}
 
 }

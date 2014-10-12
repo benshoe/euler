@@ -1,7 +1,6 @@
 package org.schoen.ben.euler;
 
 import java.math.*;
-import java.util.*;
 
 /**
  * Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
@@ -63,24 +62,27 @@ public class Problem13 implements IEulerProblem {
 		+ "77158542502016545090413245809786882778948721859617 72107838435069186155435662884062257473692284509516 "
 		+ "20849603980134001723930671666823555245252804609722 53503534226472524250874054075591789781264330331690";
 
+	private String m_answer;
+
 	@Override
 	public void run() {
-		List<BigInteger> bigIntegers = new ArrayList<>();
 		BigInteger bigInteger = new BigInteger("0");
 		String[] digits = m_digits.split(" ");
 		for(String s : digits) {
 			bigInteger = bigInteger.add(new BigInteger(s));
 		}
-		long sum = 0;
-		for(BigInteger bi : bigIntegers) {
-			sum += bi.longValue();
-		}
 		System.out.println(bigInteger);
+		m_answer = bigInteger.toString();
 	}
 
 	@Override
 	public String getProblemName() {
-		return "Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.";
+		return "Problem 13: Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "5537376230390876637302048746832985971773659831892672".equals(m_answer);
 	}
 
 }

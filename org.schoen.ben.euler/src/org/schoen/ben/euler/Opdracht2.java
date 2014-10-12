@@ -11,6 +11,8 @@ package org.schoen.ben.euler;
  */
 public class Opdracht2 implements IEulerProblem {
 
+	private String m_answer;
+
 	@Override
 	public void run() {
 		int max = 4000000;
@@ -28,11 +30,17 @@ public class Opdracht2 implements IEulerProblem {
 			}
 		}
 		System.out.println("The sum is: " + sum);
+		m_answer = String.valueOf(sum);
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 2: sum of even-valued terms in Fibonacci sequence until 4,000,000";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "4613732".equals(m_answer);
 	}
 
 }

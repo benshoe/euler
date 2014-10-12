@@ -13,6 +13,8 @@ import java.math.*;
  */
 public class Problem16 implements IEulerProblem {
 
+	private String m_answer;
+
 	@Override
 	public void run() {
 		BigInteger large = new BigInteger("2").pow(1000);
@@ -21,16 +23,22 @@ public class Problem16 implements IEulerProblem {
 		long sum = 0;
 		int count = 0;
 		for(int i = 0; i < s.length(); i++) {
-			sum += s.charAt(i);
+			sum += s.charAt(i) - 48;
 			count++;
 		}
 		System.out.println(sum);
 		System.out.println(count);
+		m_answer = String.valueOf(sum);
 	}
 
 	@Override
 	public String getProblemName() {
 		return "What is the sum of the digits of the number 2^1000?";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "1366".equals(m_answer);
 	}
 
 }

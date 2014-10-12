@@ -11,6 +11,8 @@ package org.schoen.ben.euler;
  */
 public class Opdracht10 implements IEulerProblem {
 
+	private String m_answer;
+
 	@Override
 	public void run() {
 		long sum = 2;
@@ -22,11 +24,17 @@ public class Opdracht10 implements IEulerProblem {
 			i += 2;
 		}
 		System.out.println("Total is: " + sum);
+		m_answer = String.valueOf(sum);
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 10: Find the sum of all the primes below two million.";
+	}
+
+	@Override
+	public boolean isCorrectAnswer() {
+		return "142913828922".equals(m_answer);
 	}
 
 }
