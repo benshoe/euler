@@ -21,11 +21,15 @@ public class Opdracht3 implements IEulerProblem {
 
 		while(startNumber > 3) {
 			if(value % startNumber == 0) {
-				if(PrimeUtil.checkPrime(startNumber))
+				if(PrimeUtil.checkPrime(startNumber)) {
 					System.out.println("The factor is: " + startNumber);
+					break;
+				}
 			}
 			startNumber -= 2;
 		}
+		if(6857 != startNumber)
+			System.out.println("WRONG WRONG WRONG WRONG WRONG ");
 	}
 
 	@Override

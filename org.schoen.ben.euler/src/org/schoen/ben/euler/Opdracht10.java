@@ -13,10 +13,13 @@ public class Opdracht10 implements IEulerProblem {
 
 	@Override
 	public void run() {
-		long[] primes = PrimeUtil.getPrimes(2000000);
-		long sum = 0;
-		for(long l : primes) {
-			sum += l;
+		long sum = 2;
+		long i = 3;
+		while(i < 2000000) {
+			if(PrimeUtil.checkPrime(i)) {
+				sum += i;
+			}
+			i += 2;
 		}
 		System.out.println("Total is: " + sum);
 	}

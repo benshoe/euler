@@ -10,7 +10,7 @@ public class PrimeUtil {
 	private static long m_primeUntil;
 
 	public static boolean checkPrime(long startNumber) {
-		long lastNumber = (long) Math.sqrt(startNumber);
+		long lastNumber = (long) Math.sqrt(startNumber) + 1;
 		for(long i = 3; i <= lastNumber; i += 2) {
 			if(startNumber % i == 0)
 				return false;
@@ -53,7 +53,7 @@ public class PrimeUtil {
 		System.out.print(numberRemoved + " numbers removed for ");
 	}
 
-	public static long[] getPrimes(long maxPrime) {
+	public static long[] getPrimesUpUntilFast(long maxPrime) {
 		m_primeUntil = maxPrime;
 		if(maxPrime % 2 != 0)
 			maxPrime++;
@@ -78,8 +78,7 @@ public class PrimeUtil {
 	}
 
 	private static void removeNonPrimes(long prime) {
-		long calculateUntil = m_primeUntil;
-		for(long i = prime * prime; i <= calculateUntil; i += prime) {
+		for(long i = prime * prime; i <= m_primeUntil; i += prime) {
 			for(int j = 1; j < m_possiblePrimes.length; j++) {
 				if(m_possiblePrimes[j] == i) {
 					m_possiblePrimes[j] = 0;
