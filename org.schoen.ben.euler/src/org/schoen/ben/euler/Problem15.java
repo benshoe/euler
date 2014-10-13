@@ -35,7 +35,6 @@ public class Problem15 implements IEulerProblem {
 			}
 			System.out.println();
 		}
-		System.out.println(grid);
 		m_answer = String.valueOf(grid[20][20]);
 	}
 
