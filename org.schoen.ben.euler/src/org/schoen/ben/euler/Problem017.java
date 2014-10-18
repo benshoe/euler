@@ -2,7 +2,7 @@ package org.schoen.ben.euler;
 
 import java.util.*;
 
-public class Problem17 implements IEulerProblem {
+public class Problem017 implements IEulerProblem {
 
 	public enum NUMBERS {
 		ONE(3), TWO(3), THREE(5), FOUR(4), FIVE(4), SIX(3), SEVEN(5), EIGHT(5), NINE(4), TEN(3), //

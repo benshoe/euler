@@ -31,7 +31,7 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 4, 2014
  */
-public class Opdracht8 implements IEulerProblem {
+public class Problem008 implements IEulerProblem {
 
 	private static final String thousandDigitNumber = "73167176531330624919225119674426574742355349194934969835203127"
 		+ "7450632623957831801698480186947885184385861560789112949495459501737958331952853208805511125406987471585238"

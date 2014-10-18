@@ -9,7 +9,7 @@ package org.schoen.ben.euler;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 3, 2014
  */
-public class Opdracht4 implements IEulerProblem {
+public class Problem004 implements IEulerProblem {
 
 	private String m_answer;
 

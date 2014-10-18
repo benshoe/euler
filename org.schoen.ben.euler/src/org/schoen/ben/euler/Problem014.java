@@ -15,7 +15,7 @@ package org.schoen.ben.euler;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 11, 2014
  */
-public class Problem14 implements IEulerProblem {
+public class Problem014 implements IEulerProblem {
 
 	private String m_answer;
 

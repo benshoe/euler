@@ -1,7 +1,7 @@
 package org.schoen.ben.euler;
 
 
-public class Problem12 implements IEulerProblem {
+public class Problem012 implements IEulerProblem {
 
 	private String m_answer;
 

@@ -11,7 +11,7 @@ import org.schoen.ben.euler.util.*;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 5, 2014
  */
-public class Opdracht10 implements IEulerProblem {
+public class Problem010 implements IEulerProblem {
 
 	private String m_answer;
 

@@ -2,7 +2,7 @@ package org.schoen.ben.euler;
 
 import java.util.*;
 
-public class Problem18 implements IEulerProblem {
+public class Problem018 implements IEulerProblem {
 
 	private String m_triangle = //
 	"75 " //

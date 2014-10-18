@@ -13,7 +13,7 @@ Find the product abc.
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 5, 2014
  */
-public class Opdracht9 implements IEulerProblem {
+public class Problem009 implements IEulerProblem {
 
 	private String m_answer;
 

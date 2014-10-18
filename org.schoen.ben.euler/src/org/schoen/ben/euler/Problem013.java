@@ -9,7 +9,7 @@ import java.math.*;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 11, 2014
  */
-public class Problem13 implements IEulerProblem {
+public class Problem013 implements IEulerProblem {
 
 	private final String m_digits = "37107287533902102798797998220837590246510135740250 46376937677490009712648124896970078050417018260538 "
 		+ "74324986199524741059474233309513058123726617309629 91942213363574161572522430563301811072406154908250 "

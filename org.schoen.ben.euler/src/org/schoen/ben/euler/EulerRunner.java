@@ -16,13 +16,13 @@ public class EulerRunner {
 		//		m_problems.add(new Opdracht9());
 		//		m_problems.add(new Opdracht10());
 		//		m_problems.add(new Opdracht11());
-		m_problems.add(new Problem12());
-		m_problems.add(new Problem13());
-		m_problems.add(new Problem14());
-		m_problems.add(new Problem15());
-		m_problems.add(new Problem16());
-		m_problems.add(new Problem17());
-		m_problems.add(new Problem18());
+		m_problems.add(new Problem012());
+		m_problems.add(new Problem013());
+		m_problems.add(new Problem014());
+		m_problems.add(new Problem015());
+		m_problems.add(new Problem016());
+		m_problems.add(new Problem017());
+		m_problems.add(new Problem018());
 	}
 
 	public static void main(String[] args) {
