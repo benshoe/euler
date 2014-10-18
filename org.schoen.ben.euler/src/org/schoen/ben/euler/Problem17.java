@@ -66,47 +66,47 @@ public class Problem17 implements IEulerProblem {
 	public void run() {
 		int sum = 0;
 		for(int i = 1; i <= 1000; i++) {
-			System.out.println(" " + sum);
+			//			System.out.println(" " + sum);
 			if(i == 100) {
 				sum += 10;
 				continue;
 			}
 			if(m_numberMap.containsKey(String.valueOf(i))) {
 				sum += m_numberMap.get(String.valueOf(i)).getLength();
-				System.out.print(m_numberMap.get(String.valueOf(i)) + " ");
+				//				System.out.print(m_numberMap.get(String.valueOf(i)) + " ");
 				continue;
 			}
 
 			if(i < 100) {
 				String s = String.valueOf(i);
 				sum += m_numberMap.get(s.substring(0, 1) + "0").getLength();
-				System.out.print(m_numberMap.get(s.substring(0, 1) + "0") + " ");
+				//				System.out.print(m_numberMap.get(s.substring(0, 1) + "0") + " ");
 				sum += m_numberMap.get(s.substring(1)).getLength();
-				System.out.print(m_numberMap.get(s.substring(1)) + " ");
+				//				System.out.print(m_numberMap.get(s.substring(1)) + " ");
 				continue;
 			}
 
 			if(i < 1000) {
 				String s = String.valueOf(i);
 				sum += m_numberMap.get(s.substring(0, 1)).getLength();
-				System.out.print(m_numberMap.get(s.substring(0, 1)) + " ");
+				//				System.out.print(m_numberMap.get(s.substring(0, 1)) + " ");
 				sum += m_numberMap.get("100").getLength(); //HUNDRED
-				System.out.print(m_numberMap.get("100") + " ");
+				//				System.out.print(m_numberMap.get("100") + " ");
 				if(i % 100 == 0) {
 					//We're done because this is a round hundred value
 					continue;
 				}
 				sum += 3; // AND as in TWO HUNDRED AND FIFTY ONE
-				System.out.print("AND ");
+				//				System.out.print("AND ");
 				if(m_numberMap.containsKey(s.substring(1, 3))) {
 					sum += m_numberMap.get(s.substring(1, 3)).getLength();
-					System.out.print(m_numberMap.get(s.substring(1, 3)) + " ");
+					//					System.out.print(m_numberMap.get(s.substring(1, 3)) + " ");
 					continue;
 				}
 				sum += m_numberMap.get(s.substring(1, 2) + "0").getLength();
-				System.out.print(m_numberMap.get(s.substring(1, 2) + "0") + " ");
+				//				System.out.print(m_numberMap.get(s.substring(1, 2) + "0") + " ");
 				sum += m_numberMap.get(s.substring(2)).getLength();
-				System.out.print(m_numberMap.get(s.substring(2)));
+				//				System.out.print(m_numberMap.get(s.substring(2)));
 			}
 		}
 		System.out.println(sum);

@@ -1,4 +1,4 @@
-package org.schoen.ben.euler;
+package org.schoen.ben.euler.util;
 
 import java.math.*;
 import java.util.*;

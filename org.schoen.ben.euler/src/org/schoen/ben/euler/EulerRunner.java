@@ -16,16 +16,17 @@ public class EulerRunner {
 		//		m_problems.add(new Opdracht9());
 		//		m_problems.add(new Opdracht10());
 		//		m_problems.add(new Opdracht11());
-		//		m_problems.add(new Problem12());
-		//		m_problems.add(new Problem13());
-		//		m_problems.add(new Problem14());
-		//		m_problems.add(new Problem15());
-		//		m_problems.add(new Problem16());
+		m_problems.add(new Problem12());
+		m_problems.add(new Problem13());
+		m_problems.add(new Problem14());
+		m_problems.add(new Problem15());
+		m_problems.add(new Problem16());
 		m_problems.add(new Problem17());
 	}
 
 	public static void main(String[] args) {
 		long totalStartTime = System.currentTimeMillis();
+		int numberOfProblems = m_problems.size();
 		for(IEulerProblem problem : m_problems) {
 			System.out.println("#########################################");
 			System.out.println(problem.getProblemName());
@@ -34,6 +35,7 @@ public class EulerRunner {
 			problem.run();
 			if(!problem.isCorrectAnswer()) {
 				System.out.println("THIS PROBLEM IS NOT SOLVED!!!!!");
+				numberOfProblems--;
 			}
 
 			long problemTime = System.currentTimeMillis() - problemStartTime;
@@ -42,6 +44,7 @@ public class EulerRunner {
 		long totalTime = System.currentTimeMillis() - totalStartTime;
 		System.out.println();
 		System.out.println();
+		System.out.println(numberOfProblems + " out of the " + m_problems.size() + " problems were solved.");
 		System.out.println("Solving all " + m_problems.size() + " challenges took " + totalTime + " milliseconds to solve.");
 	}
 
