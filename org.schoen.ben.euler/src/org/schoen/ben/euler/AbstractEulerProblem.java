@@ -2,7 +2,7 @@ package org.schoen.ben.euler;
 
 public abstract class AbstractEulerProblem implements IEulerProblem {
 
-	private String m_answer;
+	private String m_answer = "Niet correct!";
 
 	private String m_correctAnswer;
 
