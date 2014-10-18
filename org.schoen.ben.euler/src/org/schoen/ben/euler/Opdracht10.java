@@ -1,5 +1,7 @@
 package org.schoen.ben.euler;
 
+import org.schoen.ben.euler.util.*;
+
 
 /**
  * The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
