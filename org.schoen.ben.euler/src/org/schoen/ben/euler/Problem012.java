@@ -1,9 +1,11 @@
 package org.schoen.ben.euler;
 
 
-public class Problem012 implements IEulerProblem {
+public class Problem012 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem012(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -12,8 +14,7 @@ public class Problem012 implements IEulerProblem {
 		for(;;) {
 			long answer = calculateFactors(number, 500);
 			if(answer != -1) {
-				System.out.println(answer);
-				m_answer = String.valueOf(answer);
+				setAnswer(String.valueOf(answer));
 				break;
 			}
 			number += next;
@@ -40,11 +41,6 @@ public class Problem012 implements IEulerProblem {
 	@Override
 	public String getProblemName() {
 		return "Problem 12: What is the value of the first triangle number to have over five hundred divisors?";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "76576500".equals(m_answer);
 	}
 
 }

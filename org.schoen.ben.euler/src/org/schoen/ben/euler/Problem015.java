@@ -9,9 +9,11 @@ package org.schoen.ben.euler;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 11, 2014
  */
-public class Problem015 implements IEulerProblem {
+public class Problem015 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem015(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -35,17 +37,12 @@ public class Problem015 implements IEulerProblem {
 			}
 			System.out.println();
 		}
-		m_answer = String.valueOf(grid[20][20]);
+		setAnswer(String.valueOf(grid[20][20]));
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 15: How many such routes are there through a 20×20 grid?";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "137846528820".equals(m_answer);
 	}
 
 }

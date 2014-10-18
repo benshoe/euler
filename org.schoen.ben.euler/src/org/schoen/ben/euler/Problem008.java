@@ -31,7 +31,11 @@ Find the thirteen adjacent digits in the 1000-digit number that have the greates
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 4, 2014
  */
-public class Problem008 implements IEulerProblem {
+public class Problem008 extends AbstractEulerProblem {
+
+	public Problem008(String answer) {
+		super(answer);
+	}
 
 	private static final String thousandDigitNumber = "73167176531330624919225119674426574742355349194934969835203127"
 		+ "7450632623957831801698480186947885184385861560789112949495459501737958331952853208805511125406987471585238"
@@ -43,8 +47,6 @@ public class Problem008 implements IEulerProblem {
 		+ "8617866458359124566529476545682848912883142607690042242190226710556263211111093705442175069416589604080719"
 		+ "8403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646"
 		+ "710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450";
-
-	private String m_answer;
 
 	@Override
 	public void run() {
@@ -74,7 +76,7 @@ public class Problem008 implements IEulerProblem {
 		System.out.println(solution);
 		long product = calculateProduct(solution);
 		System.out.println("Het product is: " + product);
-		m_answer = String.valueOf(product);
+		setAnswer(String.valueOf(product));
 	}
 
 	private boolean isOutOfBound(int startAt) {
@@ -94,8 +96,4 @@ public class Problem008 implements IEulerProblem {
 		return "Problem 8: Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?";
 	}
 
-	@Override
-	public boolean isCorrectAnswer() {
-		return "23514624000".equals(m_answer);
-	}
 }

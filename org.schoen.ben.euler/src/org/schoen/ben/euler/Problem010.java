@@ -11,9 +11,11 @@ import org.schoen.ben.euler.util.*;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 5, 2014
  */
-public class Problem010 implements IEulerProblem {
+public class Problem010 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem010(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -25,18 +27,12 @@ public class Problem010 implements IEulerProblem {
 			}
 			i += 2;
 		}
-		System.out.println("Total is: " + sum);
-		m_answer = String.valueOf(sum);
+		setAnswer(String.valueOf(sum));
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 10: Find the sum of all the primes below two million.";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "142913828922".equals(m_answer);
 	}
 
 }

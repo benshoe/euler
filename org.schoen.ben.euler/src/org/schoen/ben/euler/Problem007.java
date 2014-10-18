@@ -11,9 +11,11 @@ import org.schoen.ben.euler.util.*;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 5, 2014
  */
-public class Problem007 implements IEulerProblem {
+public class Problem007 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem007(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -23,18 +25,12 @@ public class Problem007 implements IEulerProblem {
 			if(PrimeUtil.checkPrime(i += 2))
 				count++;
 		}
-		System.out.println(i);
-		m_answer = String.valueOf(i);
+		setAnswer(String.valueOf(i));
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 7: What is the 10 001st prime number?";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "104743".equals(m_answer);
 	}
 
 }

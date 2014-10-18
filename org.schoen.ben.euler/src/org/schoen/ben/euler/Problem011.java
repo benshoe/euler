@@ -34,9 +34,11 @@ package org.schoen.ben.euler;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 6, 2014
  */
-public class Problem011 implements IEulerProblem {
+public class Problem011 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem011(String answer) {
+		super(answer);
+	}
 
 	private static final String GRID = //
 	"08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 " //
@@ -78,8 +80,7 @@ public class Problem011 implements IEulerProblem {
 			cell++;
 		}
 
-		System.out.println(product);
-		m_answer = String.valueOf(product);
+		setAnswer(String.valueOf(product));
 
 	}
 
@@ -135,11 +136,6 @@ public class Problem011 implements IEulerProblem {
 	@Override
 	public String getProblemName() {
 		return "Problem 11: What is the greatest product of four adjacent numbers " + "in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "70600674".equals(m_answer);
 	}
 
 }

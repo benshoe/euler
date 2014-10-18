@@ -9,9 +9,11 @@ package org.schoen.ben.euler;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 3, 2014
  */
-public class Problem004 implements IEulerProblem {
+public class Problem004 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem004(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -38,8 +40,7 @@ public class Problem004 implements IEulerProblem {
 	private boolean hasTwoFactorsOfThreeDigits(int palindrome) {
 		for(int i = (int) Math.sqrt(palindrome); i > 99; i--) {
 			if(palindrome % i == 0 && palindrome / i > 99 & palindrome / i < 1000) {
-				m_answer = i + " " + palindrome / i;
-				System.out.println(m_answer);
+				setAnswer(i + " " + palindrome / i);
 				return true;
 			}
 		}
@@ -49,11 +50,6 @@ public class Problem004 implements IEulerProblem {
 	@Override
 	public String getProblemName() {
 		return "Problem 4: Find the largest palindrome made from the product of two 3-digit numbers.";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "913 993".equals(m_answer);
 	}
 
 }

@@ -14,4 +14,6 @@ public interface IEulerProblem {
 	String getProblemName();
 
 	boolean isCorrectAnswer();
+
+	String getAnswer();
 }

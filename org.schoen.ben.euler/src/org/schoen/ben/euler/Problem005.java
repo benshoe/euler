@@ -15,9 +15,11 @@ package org.schoen.ben.euler;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 3, 2014
  */
-public class Problem005 implements IEulerProblem {
+public class Problem005 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem005(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -28,18 +30,12 @@ public class Problem005 implements IEulerProblem {
 			}
 			sum -= i * i;
 		}
-		System.out.println(sum);
-		m_answer = String.valueOf(sum);
+		setAnswer(String.valueOf(sum));
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 5: What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "25164150".equals(m_answer);
 	}
 
 }

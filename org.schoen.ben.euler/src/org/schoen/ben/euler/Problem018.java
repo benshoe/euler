@@ -5,11 +5,13 @@ import java.util.*;
 
 import org.apache.commons.io.*;
 
-public class Problem018 implements IEulerProblem {
+public class Problem018 extends AbstractEulerProblem {
 
 	private String m_triangle;
 
-	private String m_answer;
+	public Problem018(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -32,8 +34,7 @@ public class Problem018 implements IEulerProblem {
 		}
 
 		findMaxSum(lines);
-		m_answer = String.valueOf(lines[0][0]);
-		System.out.println(m_answer);
+		setAnswer(String.valueOf(lines[0][0]));
 	}
 
 	private void findMaxSum(int[][] lines) {
@@ -53,11 +54,6 @@ public class Problem018 implements IEulerProblem {
 	@Override
 	public String getProblemName() {
 		return "Problem 18: Find the maximum total from top to bottom of the triangle below";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "1074".equals(m_answer);
 	}
 
 }

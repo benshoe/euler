@@ -2,7 +2,11 @@ package org.schoen.ben.euler;
 
 import java.util.*;
 
-public class Problem017 implements IEulerProblem {
+public class Problem017 extends AbstractEulerProblem {
+
+	public Problem017(String answer) {
+		super(answer);
+	}
 
 	public enum NUMBERS {
 		ONE(3), TWO(3), THREE(5), FOUR(4), FIVE(4), SIX(3), SEVEN(5), EIGHT(5), NINE(4), TEN(3), //
@@ -60,8 +64,6 @@ public class Problem017 implements IEulerProblem {
 
 	}
 
-	private String m_answer;
-
 	@Override
 	public void run() {
 		int sum = 0;
@@ -109,19 +111,12 @@ public class Problem017 implements IEulerProblem {
 				//				System.out.print(m_numberMap.get(s.substring(2)));
 			}
 		}
-		System.out.println(sum);
-		m_answer = String.valueOf(sum);
-
+		setAnswer(String.valueOf(sum));
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 17: If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "21124".equals(m_answer);
 	}
 
 }

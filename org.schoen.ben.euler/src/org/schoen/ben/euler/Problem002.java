@@ -9,9 +9,11 @@ package org.schoen.ben.euler;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 3, 2014
  */
-public class Problem002 implements IEulerProblem {
+public class Problem002 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem002(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -30,17 +32,12 @@ public class Problem002 implements IEulerProblem {
 			}
 		}
 		System.out.println("The sum is: " + sum);
-		m_answer = String.valueOf(sum);
+		setAnswer(String.valueOf(sum));
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 2: sum of even-valued terms in Fibonacci sequence until 4,000,000";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "4613732".equals(m_answer);
 	}
 
 }

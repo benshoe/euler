@@ -9,7 +9,11 @@ import java.math.*;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 11, 2014
  */
-public class Problem013 implements IEulerProblem {
+public class Problem013 extends AbstractEulerProblem {
+
+	public Problem013(String answer) {
+		super(answer);
+	}
 
 	private final String m_digits = "37107287533902102798797998220837590246510135740250 46376937677490009712648124896970078050417018260538 "
 		+ "74324986199524741059474233309513058123726617309629 91942213363574161572522430563301811072406154908250 "
@@ -62,8 +66,6 @@ public class Problem013 implements IEulerProblem {
 		+ "77158542502016545090413245809786882778948721859617 72107838435069186155435662884062257473692284509516 "
 		+ "20849603980134001723930671666823555245252804609722 53503534226472524250874054075591789781264330331690";
 
-	private String m_answer;
-
 	@Override
 	public void run() {
 		BigInteger bigInteger = new BigInteger("0");
@@ -71,18 +73,12 @@ public class Problem013 implements IEulerProblem {
 		for(String s : digits) {
 			bigInteger = bigInteger.add(new BigInteger(s));
 		}
-		System.out.println(bigInteger);
-		m_answer = bigInteger.toString();
+		setAnswer(bigInteger.toString());
 	}
 
 	@Override
 	public String getProblemName() {
 		return "Problem 13: Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "5537376230390876637302048746832985971773659831892672".equals(m_answer);
 	}
 
 }

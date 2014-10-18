@@ -13,9 +13,11 @@ Find the product abc.
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 5, 2014
  */
-public class Problem009 implements IEulerProblem {
+public class Problem009 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem009(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -28,8 +30,7 @@ public class Problem009 implements IEulerProblem {
 					System.out.println(y + "^2 = " + Math.pow(y, 2));
 					System.out.println(z + "^2 = " + Math.pow(z, 2));
 					System.out.println(x + " + " + y + " + " + z + " = " + (x + y + z));
-					m_answer = String.valueOf(x * y * z);
-					System.out.println("The product of xyz = " + m_answer);
+					setAnswer(String.valueOf(x * y * z));
 				}
 			}
 		}
@@ -40,8 +41,4 @@ public class Problem009 implements IEulerProblem {
 		return "Problem 9: Find the Pythagorean triplet for which a + b + c = 1000.";
 	}
 
-	@Override
-	public boolean isCorrectAnswer() {
-		return "31875000".equals(m_answer);
-	}
 }

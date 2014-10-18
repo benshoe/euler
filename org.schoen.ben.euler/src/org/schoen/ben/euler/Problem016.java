@@ -11,9 +11,11 @@ import java.math.*;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 11, 2014
  */
-public class Problem016 implements IEulerProblem {
+public class Problem016 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem016(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -26,19 +28,12 @@ public class Problem016 implements IEulerProblem {
 			sum += s.charAt(i) - 48;
 			count++;
 		}
-		System.out.println(sum);
-		System.out.println(count);
-		m_answer = String.valueOf(sum);
+		setAnswer(String.valueOf(sum));
 	}
 
 	@Override
 	public String getProblemName() {
 		return "What is the sum of the digits of the number 2^1000?";
-	}
-
-	@Override
-	public boolean isCorrectAnswer() {
-		return "1366".equals(m_answer);
 	}
 
 }

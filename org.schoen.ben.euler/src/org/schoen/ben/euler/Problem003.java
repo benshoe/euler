@@ -11,9 +11,11 @@ import org.schoen.ben.euler.util.*;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * Created on Oct 3, 2014
  */
-public class Problem003 implements IEulerProblem {
+public class Problem003 extends AbstractEulerProblem {
 
-	private String m_answer;
+	public Problem003(String answer) {
+		super(answer);
+	}
 
 	@Override
 	public void run() {
@@ -32,7 +34,7 @@ public class Problem003 implements IEulerProblem {
 			}
 			startNumber -= 2;
 		}
-		m_answer = String.valueOf(startNumber);
+		setAnswer(String.valueOf(startNumber));
 	}
 
 	@Override
@@ -40,8 +42,4 @@ public class Problem003 implements IEulerProblem {
 		return "Problem 3: What is the largest prime factor of the number 600851475143 ?";
 	}
 
-	@Override
-	public boolean isCorrectAnswer() {
-		return "6857".equals(m_answer);
-	}
 }
