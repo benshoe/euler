@@ -21,7 +21,8 @@ public class EulerRunner {
 		//		m_problems.add(new Problem14());
 		//		m_problems.add(new Problem15());
 		//		m_problems.add(new Problem16());
-		m_problems.add(new Problem17());
+		//		m_problems.add(new Problem17());
+		m_problems.add(new Problem18());
 	}
 
 	public static void main(String[] args) {
