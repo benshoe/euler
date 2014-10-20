@@ -18,22 +18,26 @@ import org.schoen.ben.euler.util.*;
  */
 public class Problem021 extends AbstractEulerProblem {
 
+
 	public Problem021(String answer) {
 		super(answer);
 	}
 
 	@Override
 	public void run() {
-		Map<Integer, Integer> factorSums = new HashMap<>();
-		for(int i = 1; i < 10000; i++) {
+		int answer = 0;
+		for(int i = 2; i < 10000; i++) {
 			List<Integer> factors = getFactors(i);
 			if(factors != Collections.EMPTY_LIST) {
 				Integer sum = getSumOfFactors(factors);
-				factorSums.put(new Integer(i), sum);
+				List<Integer> otherWayAround = getFactors(sum.intValue());
+				Integer sumBackwards = getSumOfFactors(otherWayAround);
+				if(i == sumBackwards.intValue() && sum.intValue() != i) {
+					answer = sum.intValue() + sumBackwards.intValue();
+				}
 			}
 		}
-		int sum = 0;
-		System.out.println(sum);
+		System.out.println(answer);
 	}
 
 	private Integer getSumOfFactors(List<Integer> factors) {
