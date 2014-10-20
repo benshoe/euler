@@ -1,6 +1,6 @@
 package org.schoen.ben.euler;
 
-import java.util.*;
+import org.schoen.ben.euler.util.*;
 
 /**
  * Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
@@ -25,41 +25,13 @@ public class Problem021 extends AbstractEulerProblem {
 	public void run() {
 		int answer = 0;
 		for(int i = 2; i < 10000; i++) {
-			List<Integer> factors = getFactors(i);
-			if(factors != Collections.EMPTY_LIST) {
-				Integer sum = getSumOfFactors(factors);
-				List<Integer> otherWayAround = getFactors(sum.intValue());
-				Integer sumBackwards = getSumOfFactors(otherWayAround);
-				if(i == sumBackwards.intValue() && sum.intValue() != i) {
-					answer += sum.intValue();
-				}
+			Integer sum = FactorUtil.getSumOfFactors(i);
+			Integer sumBackwards = FactorUtil.getSumOfFactors(sum.intValue());
+			if(i == sumBackwards.intValue() && sum.intValue() != i) {
+				answer += sum.intValue();
 			}
 		}
 		setAnswer(String.valueOf(answer));
-	}
-
-	private Integer getSumOfFactors(List<Integer> factors) {
-		int sum = 0;
-		for(Integer integer : factors) {
-			sum += integer.intValue();
-		}
-		return Integer.valueOf(sum);
-	}
-
-	private List<Integer> getFactors(int i) {
-		List<Integer> factors = new ArrayList<>();
-		factors.add(new Integer("1"));
-		int sqr = (int) Math.sqrt(i) + 1;
-		for(int x = 2; x < sqr; x++) {
-			int factor = i / x;
-			if(i % x == 0) {
-				factors.add(new Integer(x));
-				if(x != factor) {
-					factors.add(new Integer(factor));
-				}
-			}
-		}
-		return factors;
 	}
 
 	@Override
