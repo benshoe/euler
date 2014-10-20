@@ -33,11 +33,11 @@ public class Problem021 extends AbstractEulerProblem {
 				List<Integer> otherWayAround = getFactors(sum.intValue());
 				Integer sumBackwards = getSumOfFactors(otherWayAround);
 				if(i == sumBackwards.intValue() && sum.intValue() != i) {
-					answer = sum.intValue() + sumBackwards.intValue();
+					answer += sum.intValue();
 				}
 			}
 		}
-		System.out.println(answer);
+		setAnswer(String.valueOf(answer));
 	}
 
 	private Integer getSumOfFactors(List<Integer> factors) {
