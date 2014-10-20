@@ -42,7 +42,6 @@ public class Problem021 extends AbstractEulerProblem {
 		int sum = 0;
 		for(Integer integer : factors) {
 			sum += integer.intValue();
-			System.out.println(integer);
 		}
 		return Integer.valueOf(sum);
 	}
