@@ -10,7 +10,6 @@
 Servers
 build
 work
-*.jar
 *Thumbs.db
 *.bak
 */maven
