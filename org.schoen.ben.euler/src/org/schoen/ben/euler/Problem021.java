@@ -2,8 +2,6 @@ package org.schoen.ben.euler;
 
 import java.util.*;
 
-import org.schoen.ben.euler.util.*;
-
 /**
  * Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
  * If d(a) = b and d(b) = a, where a ≠ b, then a and b are an amicable pair and each of a and b are called amicable numbers.
@@ -44,15 +42,12 @@ public class Problem021 extends AbstractEulerProblem {
 		int sum = 0;
 		for(Integer integer : factors) {
 			sum += integer.intValue();
+			System.out.println(integer);
 		}
 		return Integer.valueOf(sum);
 	}
 
 	private List<Integer> getFactors(int i) {
-		if(PrimeUtil.checkPrime(i)) {
-			return Collections.EMPTY_LIST;
-		}
-
 		List<Integer> factors = new ArrayList<>();
 		factors.add(new Integer("1"));
 		int sqr = (int) Math.sqrt(i) + 1;
