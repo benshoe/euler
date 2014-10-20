@@ -11,7 +11,7 @@ public class PrimeUtil {
 
 	public static boolean checkPrime(long startNumber) {
 		long lastNumber = (long) Math.sqrt(startNumber) + 1;
-		for(long i = 2; i <= lastNumber; i += 2) {
+		for(long i = 3; i <= lastNumber; i += 2) {
 			if(startNumber % i == 0)
 				return false;
 		}

@@ -70,7 +70,7 @@ public class Problem021 extends AbstractEulerProblem {
 
 	@Override
 	public String getProblemName() {
-		return "Evaluate the sum of all the amicable numbers under 10000.";
+		return "Problem 21: Evaluate the sum of all the amicable numbers under 10000.";
 	}
 
 }

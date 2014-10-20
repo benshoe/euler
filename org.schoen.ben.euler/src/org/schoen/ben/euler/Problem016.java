@@ -23,10 +23,8 @@ public class Problem016 extends AbstractEulerProblem {
 		System.out.println(large);
 		String s = large.toString();
 		long sum = 0;
-		int count = 0;
 		for(int i = 0; i < s.length(); i++) {
 			sum += s.charAt(i) - 48;
-			count++;
 		}
 		setAnswer(String.valueOf(sum));
 	}

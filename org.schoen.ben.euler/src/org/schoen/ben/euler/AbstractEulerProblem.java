@@ -25,6 +25,7 @@ public abstract class AbstractEulerProblem implements IEulerProblem {
 		m_answer = answer;
 	}
 
+	@Override
 	public String getAnswer() {
 		return m_answer;
 	}

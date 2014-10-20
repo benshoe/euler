@@ -1,6 +1,5 @@
 package org.schoen.ben.euler;
 
-import java.text.*;
 import java.util.*;
 
 public class Problem019 extends AbstractEulerProblem {
@@ -8,13 +7,6 @@ public class Problem019 extends AbstractEulerProblem {
 	public Problem019(String answer) {
 		super(answer);
 	}
-
-	private static final ThreadLocal<SimpleDateFormat> SDF = new ThreadLocal<SimpleDateFormat>() {
-		@Override
-		public SimpleDateFormat get() {
-			return new SimpleDateFormat("dd-MM-yyyy");
-		}
-	};
 
 	@Override
 	public void run() {

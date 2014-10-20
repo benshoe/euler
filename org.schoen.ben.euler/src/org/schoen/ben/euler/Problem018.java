@@ -1,9 +1,13 @@
 package org.schoen.ben.euler;
 
-import java.io.*;
-import java.util.*;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static java.nio.file.Files.newBufferedReader;
+import static java.nio.file.Paths.get;
 
-import org.apache.commons.io.*;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import java.util.stream.*;
 
 public class Problem018 extends AbstractEulerProblem {
 
@@ -15,11 +19,11 @@ public class Problem018 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-		try {
-			m_triangle = FileUtils.readFileToString(new File("src/org/schoen/ben/euler/File018.txt"), "UTF8");
-		} catch(IOException e) {
-			e.printStackTrace();
+		BufferedReader reader = readFile();
+		if(reader == null) {
+			System.out.println("The file could not be read...");
 		}
+		m_triangle = reader.lines().collect(Collectors.joining());
 		String[] triangle = m_triangle.split(" ");
 		List<String> list = Arrays.asList(triangle);
 
@@ -35,6 +39,17 @@ public class Problem018 extends AbstractEulerProblem {
 
 		findMaxSum(lines);
 		setAnswer(String.valueOf(lines[0][0]));
+	}
+
+	private BufferedReader readFile() {
+		URI uri;
+		try {
+			uri = Problem018.class.getResource("File018.txt").toURI();
+			return newBufferedReader(get(uri), UTF_8);
+		} catch(URISyntaxException | IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	private void findMaxSum(int[][] lines) {
