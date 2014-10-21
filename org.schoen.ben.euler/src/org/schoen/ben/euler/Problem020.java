@@ -2,6 +2,8 @@ package org.schoen.ben.euler;
 
 import java.math.*;
 
+import org.schoen.ben.euler.util.*;
+
 /**
  * n! means n × (n − 1) × ... × 3 × 2 × 1
  *
@@ -22,19 +24,13 @@ public class Problem020 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-		BigInteger fac100 = calculateFaculty(new BigInteger("100"));
+		BigInteger fac100 = MathUtil.faculty(new BigInteger("100"));
 		String faculty100 = fac100.toString();
 		int sum = 0;
 		for(int i = 0; i < fac100.toString().length(); i++) {
 			sum += Integer.valueOf(faculty100.substring(i, i + 1)).intValue();
 		}
 		setAnswer(String.valueOf(sum));
-	}
-
-	private BigInteger calculateFaculty(BigInteger n) {
-		if(n.equals(BigInteger.ONE))
-			return BigInteger.ONE;
-		return n.multiply(calculateFaculty(n.subtract(BigInteger.ONE)));
 	}
 
 	@Override
