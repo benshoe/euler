@@ -31,26 +31,26 @@ public class Problem023 extends AbstractEulerProblem {
 	@Override
 	public void run() {
 		List<Integer> abundantNumbers = new ArrayList<>();
-		List<Integer> allNumbers = new ArrayList<>();
 		for(int i = 1; i < 28123; i++) {
 			Integer sumOfFactors = FactorUtil.getSumOfFactors(i);
-			allNumbers.add(Integer.valueOf(i));
 			if(sumOfFactors.intValue() > i) {
 				abundantNumbers.add(Integer.valueOf(i));
 			}
 		}
 		System.out.println(abundantNumbers);
-		System.out.println(allNumbers);
 
+		Set<Integer> allAbundantSums = new HashSet<>();
 		for(int i = 0; i < abundantNumbers.size(); i++) {
 			for(int j = i; j < abundantNumbers.size(); j++) {
 				int sumOfTwoAbundantNumbers = abundantNumbers.get(i).intValue() + abundantNumbers.get(j).intValue();
-				allNumbers.remove(Integer.valueOf(sumOfTwoAbundantNumbers));
+				allAbundantSums.add(Integer.valueOf(sumOfTwoAbundantNumbers));
 			}
 		}
 		int sum = 0;
-		for(Integer integer : allNumbers) {
-			sum += integer.intValue();
+		for(int i = 1; i < 28123; i++) {
+			if(!allAbundantSums.contains(Integer.valueOf(i))) {
+				sum += i;
+			}
 		}
 		setAnswer(String.valueOf(sum));
 	}
