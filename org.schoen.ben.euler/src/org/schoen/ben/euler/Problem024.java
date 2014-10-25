@@ -24,32 +24,29 @@ public class Problem024 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-		int[] perm = new int[]{0, 1, 2, 3};
+		int[] perm = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 		ArrayUtil.printArray(perm);
 
 		int k = findHighestValidK(perm);
-		;
 		int l = 0;
 		int temp = 0;
 		int counter = 1;
-		while(counter <= 24 && k != -1) {
+		while(counter <= 999999 && k != -1) {
 			l = findHighestValidL(perm, k);
 			temp = perm[l];
 			perm[l] = perm[k];
 			perm[k] = temp;
 			ArrayUtil.reverse(perm, k + 1);
-			ArrayUtil.printArray(perm);
 			k = findHighestValidK(perm);
 			counter++;
 		}
-		System.out.println("We zijn klaar!");
+		ArrayUtil.printArray(perm);
 
 	}
 
 	private int findHighestValidK(int[] perm) {
-		int rightMostValue = perm[perm.length - 1];
-		for(int i = perm.length - 1; i >= 0; i--) {
-			if(perm[i] < rightMostValue)
+		for(int i = perm.length - 2; i >= 0; i--) {
+			if(perm[i] < perm[i + 1])
 				return i;
 		}
 		return -1;
