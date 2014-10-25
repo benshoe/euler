@@ -46,6 +46,7 @@ public class Problem025 extends AbstractEulerProblem {
 			second = fibonacci;
 			counter++;
 		}
+		setAnswer(String.valueOf(counter));
 		System.out.println(fibonacci);
 		System.out.println(counter);
 	}

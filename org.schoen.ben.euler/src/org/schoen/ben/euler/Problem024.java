@@ -40,6 +40,11 @@ public class Problem024 extends AbstractEulerProblem {
 			counter++;
 		}
 		ArrayUtil.printArray(perm);
+		StringBuilder answer = new StringBuilder();
+		for(int i = 0; i < perm.length; i++) {
+			answer = answer.append(perm[i]);
+		}
+		setAnswer(answer.toString());
 
 	}
 
