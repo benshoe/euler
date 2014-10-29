@@ -33,6 +33,7 @@ public class EulerRunner {
 		//		m_problems.add(new Problem026("983"));
 		//		m_problems.add(new Problem027("-59231"));
 		m_problems.add(new Problem028("669171001"));
+		m_problems.add(new Problem029("9183"));
 	}
 
 	public static void main(String[] args) {
