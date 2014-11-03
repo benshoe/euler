@@ -24,7 +24,6 @@ public class Problem033 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-		int answer = 0;
 		int tellers = 1;
 		int noemers = 1;
 		for(double t = 12; t <= 98; t++) {
