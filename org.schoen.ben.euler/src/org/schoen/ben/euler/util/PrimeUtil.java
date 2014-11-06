@@ -9,7 +9,7 @@ public class PrimeUtil {
 
 	private static long m_primeUntil;
 
-	public static boolean checkPrime(long startNumber) {
+	public static boolean isPrime(long startNumber) {
 		if(startNumber == 2)
 			return true;
 		if(startNumber <= 0 || startNumber == 1 || startNumber % 2 == 0)

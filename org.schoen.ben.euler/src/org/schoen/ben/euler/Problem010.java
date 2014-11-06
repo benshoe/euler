@@ -22,7 +22,7 @@ public class Problem010 extends AbstractEulerProblem {
 		long sum = 2;
 		long i = 3;
 		while(i < 2000000) {
-			if(PrimeUtil.checkPrime(i)) {
+			if(PrimeUtil.isPrime(i)) {
 				sum += i;
 			}
 			i += 2;

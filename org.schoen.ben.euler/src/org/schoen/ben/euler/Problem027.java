@@ -29,13 +29,13 @@ public class Problem027 extends AbstractEulerProblem {
 		int numberOfPrimesSofar = 1;
 		int numberOfPrimes = 0;
 		for(int b = 3; b < 1000; b += 2) {
-			if(PrimeUtil.checkPrime(b)) {
+			if(PrimeUtil.isPrime(b)) {
 				int sum = b;
 				for(int a = -b + 1; a < b; a++) {
 					numberOfPrimesSofar = 1;
 					for(int n = 0; n < b; n++) {
 						sum = n * n + a * n + b;
-						if(PrimeUtil.checkPrime(sum)) {
+						if(PrimeUtil.isPrime(sum)) {
 							numberOfPrimesSofar++;
 						} else {
 							break;

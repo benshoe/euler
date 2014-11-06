@@ -22,7 +22,7 @@ public class Problem007 extends AbstractEulerProblem {
 		int count = 1;
 		int i = 3;
 		while(count != 10000) {
-			if(PrimeUtil.checkPrime(i += 2))
+			if(PrimeUtil.isPrime(i += 2))
 				count++;
 		}
 		setAnswer(String.valueOf(i));

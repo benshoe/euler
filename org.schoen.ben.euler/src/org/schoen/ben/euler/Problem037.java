@@ -28,19 +28,19 @@ public class Problem037 extends AbstractEulerProblem {
 		int number = 11;
 		int answer = 0;
 		while(found < 11) {
-			if(PrimeUtil.checkPrime(number)) {
+			if(PrimeUtil.isPrime(number)) {
 				String num = String.valueOf(number);
 				boolean allPrimes = true;
 				int i = 1;
 				while(i < num.length()) {
-					if(!PrimeUtil.checkPrime(Long.valueOf(num.substring(i)).longValue())) {
+					if(!PrimeUtil.isPrime(Long.valueOf(num.substring(i)).longValue())) {
 						allPrimes = false;
 					}
 					i++;
 				}
 				i = num.length() - 1;
 				while(i > 0) {
-					if(!PrimeUtil.checkPrime(Long.valueOf(num.substring(0, i)))) {
+					if(!PrimeUtil.isPrime(Long.valueOf(num.substring(0, i)))) {
 						allPrimes = false;
 					}
 					i--;

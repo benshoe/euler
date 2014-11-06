@@ -26,7 +26,7 @@ public class Problem026 extends AbstractEulerProblem {
 		int answer = 0;
 		BigDecimal value = BigDecimal.ONE;
 		for(int i = 7; i < 1000; i += 2) {
-			if(!PrimeUtil.checkPrime(i)) {
+			if(!PrimeUtil.isPrime(i)) {
 				continue;
 			}
 			value = BigDecimal.ONE.divide(new BigDecimal(i), MATH_CTX).multiply(BigDecimal.TEN.pow(String.valueOf(i).length() - 1));

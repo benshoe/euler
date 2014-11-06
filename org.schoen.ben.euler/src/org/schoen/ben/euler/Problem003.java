@@ -27,7 +27,7 @@ public class Problem003 extends AbstractEulerProblem {
 
 		while(startNumber > 3) {
 			if(value % startNumber == 0) {
-				if(PrimeUtil.checkPrime(startNumber)) {
+				if(PrimeUtil.isPrime(startNumber)) {
 					System.out.println("The factor is: " + startNumber);
 					break;
 				}

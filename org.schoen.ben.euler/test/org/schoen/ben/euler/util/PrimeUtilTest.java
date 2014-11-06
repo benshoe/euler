@@ -6,13 +6,13 @@ public class PrimeUtilTest {
 
 	@Test
 	public void testCheckPrime() {
-		Assert.assertFalse(PrimeUtil.checkPrime(0));
-		Assert.assertFalse(PrimeUtil.checkPrime(1));
-		Assert.assertFalse(PrimeUtil.checkPrime(4));
-		Assert.assertFalse(PrimeUtil.checkPrime(8));
-		Assert.assertTrue(PrimeUtil.checkPrime(2));
-		Assert.assertTrue(PrimeUtil.checkPrime(3));
-		Assert.assertTrue(PrimeUtil.checkPrime(5));
-		Assert.assertTrue(PrimeUtil.checkPrime(97));
+		Assert.assertFalse(PrimeUtil.isPrime(0));
+		Assert.assertFalse(PrimeUtil.isPrime(1));
+		Assert.assertFalse(PrimeUtil.isPrime(4));
+		Assert.assertFalse(PrimeUtil.isPrime(8));
+		Assert.assertTrue(PrimeUtil.isPrime(2));
+		Assert.assertTrue(PrimeUtil.isPrime(3));
+		Assert.assertTrue(PrimeUtil.isPrime(5));
+		Assert.assertTrue(PrimeUtil.isPrime(97));
 	}
 }

@@ -33,11 +33,11 @@ public class Problem035 extends AbstractEulerProblem {
 			if(s.contains("0") || s.contains("2") || s.contains("4") || s.contains("6") || s.contains("8") || s.contains("5"))
 				continue;
 			boolean allPermutationsArePrime = false;
-			if(PrimeUtil.checkPrime(i)) {
+			if(PrimeUtil.isPrime(i)) {
 				int[] perms = PermutationUtil.getCircularPermutations(i);
 				Set<Integer> subSet = new HashSet<>();
 				for(int j = 0; j < perms.length; j++) {
-					if(PrimeUtil.checkPrime(perms[j])) {
+					if(PrimeUtil.isPrime(perms[j])) {
 						subSet.add(Integer.valueOf(perms[j]));
 						allPermutationsArePrime = true;
 					} else {
