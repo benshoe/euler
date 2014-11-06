@@ -8,6 +8,8 @@ public class PrimeUtilTest {
 	public void testCheckPrime() {
 		Assert.assertFalse(PrimeUtil.checkPrime(0));
 		Assert.assertFalse(PrimeUtil.checkPrime(1));
+		Assert.assertFalse(PrimeUtil.checkPrime(4));
+		Assert.assertFalse(PrimeUtil.checkPrime(8));
 		Assert.assertTrue(PrimeUtil.checkPrime(2));
 		Assert.assertTrue(PrimeUtil.checkPrime(3));
 		Assert.assertTrue(PrimeUtil.checkPrime(5));
