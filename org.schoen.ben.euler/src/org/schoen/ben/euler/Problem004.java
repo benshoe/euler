@@ -1,5 +1,7 @@
 package org.schoen.ben.euler;
 
+import org.schoen.ben.euler.util.*;
+
 /**
  * A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
  *
@@ -20,21 +22,12 @@ public class Problem004 extends AbstractEulerProblem {
 		int startNumber = 999 * 999;
 		int endNumber = 100 * 100;
 		while(startNumber >= endNumber) {
-			if(isPalindrome(startNumber)) {
+			if(MathUtil.isPalindrome(startNumber)) {
 				if(hasTwoFactorsOfThreeDigits(startNumber))
 					break;
 			}
 			startNumber--;
 		}
-	}
-
-	private boolean isPalindrome(int startNumber) {
-		String palindrome = String.valueOf(startNumber);
-		StringBuilder sb = new StringBuilder(palindrome);
-		if(palindrome.equals(sb.reverse().toString())) {
-			return true;
-		}
-		return false;
 	}
 
 	private boolean hasTwoFactorsOfThreeDigits(int palindrome) {
