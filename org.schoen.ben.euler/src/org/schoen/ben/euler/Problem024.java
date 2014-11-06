@@ -24,7 +24,7 @@ public class Problem024 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-		int[] perm = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+		int[] perm = new int[]{0, 1, 2};//2, 3, 4, 5, 6, 7, 8, 9};
 
 		int k = findHighestValidK(perm);
 		int l = 0;
