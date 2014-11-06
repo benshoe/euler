@@ -19,11 +19,7 @@ public class MathUtil {
 
 	public static boolean isPalindrome(long startNumber) {
 		String palindrome = String.valueOf(startNumber);
-		StringBuilder sb = new StringBuilder(palindrome);
-		if(palindrome.equals(sb.reverse().toString())) {
-			return true;
-		}
-		return false;
+		return isPalindrome(palindrome);
 	}
 
 	public static boolean isPalindrome(String s) {
