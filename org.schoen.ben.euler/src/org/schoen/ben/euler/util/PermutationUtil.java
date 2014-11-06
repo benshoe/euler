@@ -86,4 +86,23 @@ public class PermutationUtil {
 		}
 		return 0;
 	}
+
+	public static int[] getCircularPermutations(int value) {
+		final int numberOfDigits = String.valueOf(value).length();
+		int[] digits = new int[numberOfDigits];
+		createArrayFromValue(digits, value);
+		int[] circularPermutations = new int[numberOfDigits];
+		circularPermutations[0] = value;
+		for(int i = 1; i < numberOfDigits; i++) {
+			int temp = digits[0];
+			for(int j = 0; j <= numberOfDigits - 1; j++) {
+				if(j + 1 > numberOfDigits - 1)
+					digits[j] = temp;
+				else
+					digits[j] = digits[j + 1];
+			}
+			circularPermutations[i] = getPermValue(digits);
+		}
+		return circularPermutations;
+	}
 }

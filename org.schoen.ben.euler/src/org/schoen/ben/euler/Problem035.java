@@ -28,20 +28,21 @@ public class Problem035 extends AbstractEulerProblem {
 		Set<Integer> circularPrimes = new HashSet<>();
 		circularPrimes.add(Integer.valueOf("2"));
 		circularPrimes.add(Integer.valueOf("5"));
-		for(int i = 3; i < 10000; i += 2) {
+		for(int i = 3; i < 1000000; i += 2) {
 			String s = String.valueOf(i);
 			if(s.contains("0") || s.contains("2") || s.contains("4") || s.contains("6") || s.contains("8") || s.contains("5"))
 				continue;
-			boolean allPermutationsArePrime = true;
+			boolean allPermutationsArePrime = false;
 			if(PrimeUtil.checkPrime(i)) {
-				int[] perms = PermutationUtil.getPermutations(i);
+				int[] perms = PermutationUtil.getCircularPermutations(i);
 				Set<Integer> subSet = new HashSet<>();
 				for(int j = 0; j < perms.length; j++) {
 					if(PrimeUtil.checkPrime(perms[j])) {
 						subSet.add(Integer.valueOf(perms[j]));
+						allPermutationsArePrime = true;
 					} else {
-						//						allPermutationsArePrime = false;
-						//						break;
+						allPermutationsArePrime = false;
+						break;
 					}
 				}
 				if(allPermutationsArePrime) {
@@ -49,9 +50,7 @@ public class Problem035 extends AbstractEulerProblem {
 				}
 			}
 		}
-		List<Integer> permms = circularPrimes.stream().sorted().collect(Collectors.toList());
-		System.out.println(permms);
-		System.out.println(circularPrimes);
+		System.out.println(circularPrimes.stream().sorted().collect(Collectors.toList()));
 		setAnswer(String.valueOf(circularPrimes.size()));
 	}
 

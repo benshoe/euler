@@ -57,4 +57,22 @@ public class PermutationUtilTest {
 		Assert.assertEquals(9937, perms[10]);
 		Assert.assertEquals(9973, perms[11]);
 	}
+
+	@Test
+	public void getCircularPermutations() {
+		int[] perms = PermutationUtil.getCircularPermutations(1);
+		Assert.assertTrue(perms.length == 1);
+		Assert.assertEquals(1, perms[0]);
+
+		perms = PermutationUtil.getCircularPermutations(15);
+		Assert.assertTrue(perms.length == 2);
+		Assert.assertEquals(15, perms[0]);
+		Assert.assertEquals(51, perms[1]);
+
+		perms = PermutationUtil.getCircularPermutations(179);
+		Assert.assertTrue(perms.length == 3);
+		Assert.assertEquals(179, perms[0]);
+		Assert.assertEquals(791, perms[1]);
+		Assert.assertEquals(917, perms[2]);
+	}
 }
