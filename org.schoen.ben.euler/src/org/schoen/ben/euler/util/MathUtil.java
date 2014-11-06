@@ -25,4 +25,8 @@ public class MathUtil {
 		}
 		return false;
 	}
+
+	public static boolean isPalindrome(String s) {
+		return s.equals(new StringBuilder(s).reverse().toString());
+	}
 }

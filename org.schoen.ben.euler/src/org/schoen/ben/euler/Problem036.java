@@ -1,5 +1,7 @@
 package org.schoen.ben.euler;
 
+import org.schoen.ben.euler.util.*;
+
 /**
  * The decimal number, 585 = 1001001001 (binary), is palindromic in both bases.
  *
@@ -21,10 +23,18 @@ public class Problem036 extends AbstractEulerProblem {
 	public void run() {
 		/*
 		 * Only uneven numbers can be palindromic since they end in a 1 (binary)
+		 * and the base may not include leading zeros.
 		 */
+		int answer = 0;
 		for(int i = 1; i < 1000000; i += 2) {
-
+			if(MathUtil.isPalindrome(i)) {
+				if(MathUtil.isPalindrome(Integer.toBinaryString(i))) {
+					System.out.println(i + "/" + Integer.toBinaryString(i));
+					answer += i;
+				}
+			}
 		}
+		setAnswer(String.valueOf(answer));
 	}
 
 	@Override
