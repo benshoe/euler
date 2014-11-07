@@ -40,7 +40,7 @@ public class Problem037 extends AbstractEulerProblem {
 				}
 				i = num.length() - 1;
 				while(i > 0) {
-					if(!PrimeUtil.isPrime(Long.valueOf(num.substring(0, i)))) {
+					if(!PrimeUtil.isPrime(Long.valueOf(num.substring(0, i)).longValue())) {
 						allPrimes = false;
 					}
 					i--;
