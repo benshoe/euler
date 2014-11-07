@@ -11,17 +11,17 @@ import java.util.*;
  */
 public class PermutationUtil {
 
-	public static int[] getPermutations(int value) {
+	public static long[] getPermutations(long value) {
 		int[] perm = new int[String.valueOf(value).length()];
 		createArrayFromValue(perm, value);
-		Arrays.sort(perm);
+		//		Arrays.sort(perm);
 		value = getPermValue(perm);
 		int k = findHighestValidK(perm);
 		int l = 0;
 		int temp = 0;
 		int counter = 1;
 		int nrOfPerms = calculateNumberOfPermutations(perm);
-		int[] perms = new int[nrOfPerms];
+		long[] perms = new long[nrOfPerms];
 		perms[0] = value;
 		while(counter <= nrOfPerms && k != -1) {
 			l = findHighestValidL(perm, k);
@@ -52,7 +52,7 @@ public class PermutationUtil {
 		return (int) possibleCombination;
 	}
 
-	private static void createArrayFromValue(int[] perm, int value) {
+	private static void createArrayFromValue(int[] perm, long value) {
 		String s = String.valueOf(value);
 		for(int i = 0; i < s.length(); i++) {
 			perm[i] = Integer.valueOf(s.substring(i, i + 1)).intValue();

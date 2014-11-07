@@ -6,7 +6,7 @@ public class PermutationUtilTest {
 
 	@Test
 	public void testGetPermutations() {
-		int[] perms = PermutationUtil.getPermutations(123);
+		long[] perms = PermutationUtil.getPermutations(123L);
 		Assert.assertTrue(perms.length == 6);
 		Assert.assertEquals(123, perms[0]);
 		Assert.assertEquals(132, perms[1]);
@@ -18,7 +18,7 @@ public class PermutationUtilTest {
 
 	@Test
 	public void testGetUnorderedPerms() {
-		int[] perms = PermutationUtil.getPermutations(231);
+		long[] perms = PermutationUtil.getPermutations(231L);
 		Assert.assertEquals(123, perms[0]);
 		Assert.assertEquals(132, perms[1]);
 		Assert.assertEquals(213, perms[2]);
@@ -29,20 +29,20 @@ public class PermutationUtilTest {
 
 	@Test
 	public void testPermutationEqualNumbers() {
-		int[] perms = PermutationUtil.getPermutations(11);
+		long[] perms = PermutationUtil.getPermutations(11);
 		Assert.assertTrue(perms.length == 1);
 		Assert.assertEquals(11, perms[0]);
 	}
 
 	@Test
 	public void testPermutations() {
-		int[] perms = PermutationUtil.getPermutations(1151);
+		long[] perms = PermutationUtil.getPermutations(1151);
 		Assert.assertTrue(perms.length == 4);
 	}
 
 	@Test
 	public void testPermutations3799() {
-		int[] perms = PermutationUtil.getPermutations(3799);
+		long[] perms = PermutationUtil.getPermutations(3799);
 		Assert.assertTrue(perms.length == 12);
 		Assert.assertEquals(3799, perms[0]);
 		Assert.assertEquals(3979, perms[1]);
