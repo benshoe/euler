@@ -23,7 +23,7 @@ public class Problem041 extends AbstractEulerProblem {
 	@Override
 	public void run() {
 		long answer = 0;
-		for(long i = 987654321L; i > 3; i -= 2) {
+		for(long i = 7654321L; i > 3; i -= 2) { //13456789 and 12345678 are both divisible by 3, so [1,2,3,4,5,6,7] is the only possible pandigit
 			if(isUnique(i)) {
 				if(PrimeUtil.isPrime(i)) {
 					answer = i;
