@@ -1,5 +1,7 @@
 package org.schoen.ben.euler;
 
+import java.util.*;
+
 
 
 /**
@@ -28,8 +30,35 @@ public class Problem038 extends AbstractEulerProblem {
 	@Override
 	public void run() {
 		int answer = 0;
-
+		for(int i = 2; i <= 50000; i++) {
+			StringBuilder number = new StringBuilder(String.valueOf(i));
+			int multiplier = 2;
+			number.append(multiplier * i);
+			while(number.length() < 9 && unique(number)) {
+				multiplier++;
+				number = number.append(multiplier * i);
+			}
+			if(number.length() == 9 && unique(number)) {
+				answer = new Integer(number.toString()).intValue();
+				System.out.print(i + "/");
+				for(int j = 1; j <= multiplier; j++) {
+					System.out.print(i * j + " ");
+				}
+				System.out.println();
+			}
+		}
 		setAnswer(String.valueOf(answer));
+	}
+
+	private boolean unique(StringBuilder number) {
+		if(number.toString().contains("0"))
+			return false;
+		Set<Integer> uniqueNumbers = new HashSet<>();
+		for(int i = 0; i < number.length(); i++) {
+			if(!uniqueNumbers.add(Integer.valueOf(number.substring(i, i + 1))))
+				return false;
+		}
+		return true;
 	}
 
 	@Override
