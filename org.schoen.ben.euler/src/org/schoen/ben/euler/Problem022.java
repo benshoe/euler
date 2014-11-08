@@ -19,7 +19,7 @@ import org.schoen.ben.euler.util.*;
  */
 public class Problem022 extends AbstractEulerProblem {
 
-	static final String REGEXP = "\\W+"; // for splitting into words
+	private static final String REGEXP = "\\W+"; // for splitting into words
 
 	public Problem022(String answer) {
 		super(answer);
