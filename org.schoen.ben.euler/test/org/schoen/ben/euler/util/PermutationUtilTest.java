@@ -75,4 +75,16 @@ public class PermutationUtilTest {
 		Assert.assertEquals(791, perms[1]);
 		Assert.assertEquals(917, perms[2]);
 	}
+
+	@Test
+	public void getCircularStringPermutations() {
+		String[] perms = PermutationUtil.getPermutations("abc");
+		Assert.assertEquals(6, perms.length);
+		Assert.assertEquals("abc", perms[0]);
+		Assert.assertEquals("acb", perms[1]);
+		Assert.assertEquals("bac", perms[2]);
+		Assert.assertEquals("bca", perms[3]);
+		Assert.assertEquals("cab", perms[4]);
+		Assert.assertEquals("cba", perms[5]);
+	}
 }

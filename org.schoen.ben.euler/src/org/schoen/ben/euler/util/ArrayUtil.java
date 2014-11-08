@@ -14,6 +14,18 @@ public class ArrayUtil {
 		}
 	}
 
+	public static void reverse(char[] perm, int fromIndex) {
+		if(fromIndex >= perm.length) {
+			return;
+		}
+
+		for(int i = 0; i < (perm.length - fromIndex) / 2; i++) {
+			char temp = perm[fromIndex + i];
+			perm[fromIndex + i] = perm[perm.length - 1 - i];
+			perm[perm.length - 1 - i] = temp;
+		}
+	}
+
 	public static void printArray(int[] perm) {
 		for(int i = 0; i < perm.length; i++)
 			System.out.print(perm[i]);

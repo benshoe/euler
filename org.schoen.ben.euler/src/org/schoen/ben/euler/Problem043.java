@@ -29,7 +29,39 @@ public class Problem043 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-		PermutationUtil.getPermutations(1234567890);
+		long answer = 0L;
+		String[] values = PermutationUtil.getPermutations("0123456789");
+		for(String s : values) {
+			if(s.charAt(0) == '0')
+				continue;
+			int d4 = s.charAt(3) - 48;
+			if(d4 % 2 != 0)
+				continue;
+
+			int d6 = s.charAt(5) - 48;
+			if(d6 == '5' || d6 == '0')
+				continue;
+
+			if(!divisorCorrect(s.substring(7, 10), 17))
+				continue;
+			if(!divisorCorrect(s.substring(6, 9), 13))
+				continue;
+			if(!divisorCorrect(s.substring(5, 8), 11))
+				continue;
+			if(!divisorCorrect(s.substring(4, 7), 7))
+				continue;
+			if(!divisorCorrect(s.substring(3, 6), 5))
+				continue;
+			if(!divisorCorrect(s.substring(2, 5), 3))
+				continue;
+			answer += new Long(s).longValue();
+		}
+		setAnswer(String.valueOf(answer));
+	}
+
+	private boolean divisorCorrect(String substring, int i) {
+		int value = new Integer(substring).intValue();
+		return value % i == 0;
 	}
 
 	@Override
