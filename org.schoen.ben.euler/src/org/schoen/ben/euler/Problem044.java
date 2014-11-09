@@ -27,7 +27,7 @@ public class Problem044 extends AbstractEulerProblem {
 		long answer = 0;
 
 		long[] pentagonalNumbers = new long[5000];
-		for(long i = 1; i < 5000L; i++) {
+		for(long i = 1; i <= 5000L; i++) {
 			pentagonalNumbers[(int) (i - 1)] = (long) (1.5 * Math.pow(i, 2) - 0.5 * i);
 		}
 
@@ -36,18 +36,31 @@ public class Problem044 extends AbstractEulerProblem {
 		int counter = 0;
 		while(!found && counter < 5000) {
 			for(int j = 0; j < pentagonalNumbers.length; j++) {
+				if(found)
+					break;
 				for(int k = j; k < pentagonalNumbers.length; k++) {
 					long add = pentagonalNumbers[j] + pentagonalNumbers[k];
 					long subtract = pentagonalNumbers[k] - pentagonalNumbers[j];
-					if(asList.contains(add) && asList.contains(subtract)) {
-						answer = subtract;
-						found = true;
+					if(isPentagonalNumber(pentagonalNumbers, add)) {
+						if(isPentagonalNumber(pentagonalNumbers, subtract)) {
+							answer = subtract;
+							found = true;
+							break;
+						}
 					}
 				}
 			}
 			counter++;
 		}
 		setAnswer(String.valueOf(answer));
+	}
+
+	private boolean isPentagonalNumber(long[] pentagonalNumbers, long number) {
+		for(int i = 0; i < pentagonalNumbers.length; i++) {
+			if(pentagonalNumbers[i] == number)
+				return true;
+		}
+		return false;
 	}
 
 	@Override
