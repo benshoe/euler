@@ -61,7 +61,7 @@ public class Problem047 extends AbstractEulerProblem {
 			return false;
 		int primes = 0;
 		for(Integer i : factors) {
-			if(PrimeUtil.isPrime(i))
+			if(PrimeUtil.isPrime(i.longValue()))
 				primes++;
 		}
 		return primes == 4;

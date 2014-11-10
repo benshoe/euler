@@ -51,7 +51,8 @@ public class EulerRunner {
 		//		m_problems.add(new Problem044("5482660")); //doet er lang over (57 seconden)
 		//		m_problems.add(new Problem045("1533776805"));
 		//		m_problems.add(new Problem046("5777"));
-		m_problems.add(new Problem047("134043"));
+		//		m_problems.add(new Problem047("134043"));
+		m_problems.add(new Problem048("9110846700"));
 	}
 
 	public static void main(String[] args) {
