@@ -13,7 +13,7 @@ public class FactorUtil {
 		return Integer.valueOf(sum);
 	}
 
-	private static List<Integer> getFactors(int i) {
+	public static List<Integer> getFactors(int i) {
 		List<Integer> factors = new ArrayList<>();
 		factors.add(new Integer("1"));
 		int sqr = (int) Math.sqrt(i) + 1;
