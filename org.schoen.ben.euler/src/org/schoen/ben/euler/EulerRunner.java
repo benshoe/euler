@@ -7,6 +7,7 @@ public class EulerRunner {
 	private static final List<IEulerProblem> m_problems = new ArrayList<>();
 
 	static {
+		m_problems.add(new Problem001("233168"));
 		//		m_problems.add(new Problem002("4613732"));
 		//		m_problems.add(new Problem003("6857"));
 		//		m_problems.add(new Problem004("913 993"));
@@ -54,7 +55,7 @@ public class EulerRunner {
 		//		m_problems.add(new Problem047("134043"));
 		//		m_problems.add(new Problem048("9110846700"));
 		//		m_problems.add(new Problem049("296962999629"));
-		m_problems.add(new Problem050("997651"));
+		//		m_problems.add(new Problem050("997651"));
 	}
 
 	public static void main(String[] args) {
