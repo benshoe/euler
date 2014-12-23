@@ -1,5 +1,7 @@
 package org.schoen.ben.euler.util;
 
+import java.util.Arrays;
+
 /**
  * Created by bens on 12/23/14.
  */
@@ -33,7 +35,6 @@ public class PrimeFamily {
 		m_numberLeft = numberLeft;
 	}
 
-
 	public int[] getPositions() {
 		return m_positions;
 	}
@@ -48,7 +49,7 @@ public class PrimeFamily {
 		PrimeFamily other = (PrimeFamily) o;
 		if (other.getLength() != this.getLength())
 			return false;
-		if (other.getPositions() != this.getPositions())
+		if (!Arrays.equals(other.getPositions(), this.getPositions()))
 			return false;
 		if(other.getNumberLeft() != this.getNumberLeft())
 			return false;
