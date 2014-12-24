@@ -1,5 +1,14 @@
 package org.schoen.ben.euler;
 
+import org.schoen.ben.euler.util.Prime;
+import org.schoen.ben.euler.util.PrimeFamily;
+import org.schoen.ben.euler.util.PrimeUtil;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * By replacing the 1st digit of the 2-digit number *3, it turns out that six of the nine possible values:
  * 13, 23, 43, 53, 73, and 83, are all prime.
@@ -26,7 +35,21 @@ public class Problem051 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-
+		Map<PrimeFamily, List<Prime>> primesPerFamily = new HashMap<>();
+		for(long i = 101; i<100; i +=2) {
+			if(PrimeUtil.isPrime(i)) {
+				Prime prime = new Prime(i);
+				for (PrimeFamily pf : prime.getPrimeFamilies()) {
+					List<Prime> primes = primesPerFamily.get(pf);
+					if (primes == null) {
+						primes = new ArrayList<>();
+						primesPerFamily.put(pf, primes);
+					}
+					primes.add(prime);
+				}
+			}
+		}
+		System.out.println(primesPerFamily);
 	}
 
 	@Override

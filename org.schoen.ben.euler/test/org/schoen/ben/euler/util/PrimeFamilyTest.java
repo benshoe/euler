@@ -49,7 +49,7 @@ public class PrimeFamilyTest {
 
 		Assert.assertFalse(pf53237.equals(pf54247));
 	}
-	
+
 	@Test
 	public void testUnEqualityNumberLeft() {
 		PrimeFamily pf54247 = new PrimeFamily();
