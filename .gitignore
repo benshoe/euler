@@ -17,4 +17,7 @@ work
 RemoteSystemsTempFiles
 
 #IntelliJ exclusions
-out/*
+*/out/*
+/out
+*/out
+out
