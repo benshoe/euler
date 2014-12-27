@@ -5,15 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by bens on 12/23/14.
+ * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  */
 public class Prime {
-	final private BigInteger m_prime;
 
 	private List<PrimeFamily> m_primeFamilyList = new ArrayList<>();
 
 	public Prime(BigInteger prime) {
-		m_prime = prime;
+		m_primeFamilyList = PrimeFamilyCalculator.getPrimeFamilies(prime);
 	}
 
 	public Prime(long prime) {
@@ -26,9 +25,5 @@ public class Prime {
 
 	public List<PrimeFamily> getPrimeFamilies() {
 		return m_primeFamilyList;
-	}
-
-	private void setPrimeFamilies(List<PrimeFamily> primeFamilyList) {
-		m_primeFamilyList = primeFamilyList;
 	}
 }
