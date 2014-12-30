@@ -1,5 +1,14 @@
 package org.schoen.ben.euler;
 
+import org.schoen.ben.euler.util.Prime;
+import org.schoen.ben.euler.util.PrimeFamily;
+import org.schoen.ben.euler.util.PrimeFamilyCalculator;
+import org.schoen.ben.euler.util.PrimeUtil;
+
+import java.math.BigInteger;
+import java.util.List;
+import java.util.Map;
+
 /**
  * By replacing the 1st digit of the 2-digit number *3, it turns out that six of the nine possible values:
  * 13, 23, 43, 53, 73, and 83, are all prime.
@@ -26,21 +35,37 @@ public class Problem051 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-		/*Map<PrimeFamily, List<Prime>> primesPerFamily = new HashMap<>();
-		for(long i = 101; i<100; i +=2) {
-			if(PrimeUtil.isPrime(i)) {
-				Prime prime = new Prime(i);
-				for (PrimeFamily pf : prime.getPrimeFamilies()) {
-					List<Prime> primes = primesPerFamily.get(pf);
-					if (primes == null) {
-						primes = new ArrayList<>();
-						primesPerFamily.put(pf, primes);
-					}
-					primes.add(prime);
-				}
+		PrimeFamily primeFamily = null;
+		int i = 11;
+		int counter = 1;
+		int familySize = 0;
+		while(familySize < 8) {
+			if (counter % 50000 == 0) {
+				primeFamily = findMaxPrimeFamily(PrimeFamilyCalculator.getPrimeFamilies());
+				familySize = PrimeFamilyCalculator.getPrimeFamilies().get(primeFamily).size();
+				System.out.println(counter);
+				System.out.println(PrimeFamilyCalculator.getPrimeFamilies().get(primeFamily));
+			}
+			if (PrimeUtil.isPrime(i)) {
+				PrimeFamilyCalculator.addPrime(new BigInteger(Integer.valueOf(i).toString()));
+			}
+			i += 2;
+			counter += 1;
+		}
+		System.out.println(PrimeFamilyCalculator.getPrimeFamilies().get(primeFamily));
+	}
+
+	private PrimeFamily findMaxPrimeFamily(Map<PrimeFamily, List<Prime>> primeFamilies) {
+		int maxPrimeFamilySize = 0;
+		PrimeFamily primeFamily = null;
+		for(PrimeFamily pf: primeFamilies.keySet()) {
+			List<Prime> primes = primeFamilies.get(pf);
+			if(primes.size() > maxPrimeFamilySize) {
+				maxPrimeFamilySize = primes.size();
+				primeFamily = pf;
 			}
 		}
-		System.out.println(primesPerFamily);*/
+		return primeFamily;
 	}
 
 	@Override

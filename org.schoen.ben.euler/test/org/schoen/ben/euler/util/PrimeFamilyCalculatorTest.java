@@ -55,4 +55,28 @@ public class PrimeFamilyCalculatorTest {
         }
     }
 
+    @Test
+    public void testTwoDuplicateNumbers() {
+        for (int i = 56003; i < 56995; i +=2) {
+            if(PrimeUtil.isPrime(i)) {
+                PrimeFamilyCalculator.addPrime(new BigInteger(String.valueOf(i)));
+            }
+        }
+        Map<PrimeFamily, List<Prime>> primeFamilies = PrimeFamilyCalculator.getPrimeFamilies();
+        PrimeFamily primeFamilySize7 = null;
+        int maxNumberOfPrimes = 0;
+        for (PrimeFamily primeFamily : primeFamilies.keySet()) {
+            List<Prime> primes = primeFamilies.get(primeFamily);
+            int numberOfPrimes = primes.size();
+            if(numberOfPrimes > maxNumberOfPrimes) {
+                maxNumberOfPrimes = numberOfPrimes;
+                primeFamilySize7 = primeFamily;
+            }
+        }
+        List<Prime> primes = primeFamilies.get(primeFamilySize7);
+        for (Prime prime : primes) {
+            System.out.println(prime);
+        }
+        Assert.assertEquals("De priem-familie moet 7 groot zijn.", 7, maxNumberOfPrimes);
+    }
 }

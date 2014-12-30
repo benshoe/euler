@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class PrimeFamilyCalculator {
     private static PrimeFamilyCalculator m_instance = new PrimeFamilyCalculator();
-    private static Map<PrimeFamily,List<Prime>> m_primeFamilies = new HashMap<>();
+    private static Map<PrimeFamily, List<Prime>> m_primeFamilies = new HashMap<>();
 
     public static PrimeFamilyCalculator getInstance() {
         return m_instance;
@@ -26,27 +26,42 @@ public class PrimeFamilyCalculator {
     }
 
     private static String getNumberLeft(String prime, int... pos) {
-        String numberLeft = "";
-        for (int i = 0; i <= prime.length() - 1; i++) {
-            for (int p : pos) {
-                if (i != p)
-                    numberLeft += prime.charAt(i);
-            }
+        StringBuilder numberLeft = new StringBuilder(prime);
+        int counter = 0;
+        for (int p : pos) {
+            numberLeft.deleteCharAt(p-counter);
+            counter++;
         }
-        return numberLeft;
+        return numberLeft.toString();
     }
 
     public static void addPrime(BigInteger prime) {
         String p = prime.toString();
-        for (int i = 0; i <= p.length() - 1; i++) {
+        int primeLength = p.length();
+        for (int i = 0; i <= primeLength - 1; i++) {
             String numberLeft = getNumberLeft(p, i);
-            PrimeFamily pf = new PrimeFamily(p.length(), p.charAt(i) - 48, new Integer(numberLeft).intValue(), new Integer[]{i});
+            PrimeFamily pf = new PrimeFamily(primeLength, p.charAt(i) - 48, new Integer(numberLeft).intValue(), new Integer[]{i});
             List<Prime> primes = m_primeFamilies.get(pf);
             if (primes == null) {
                 primes = new ArrayList<>();
                 m_primeFamilies.put(pf, primes);
             }
             primes.add(new Prime(prime));
+        }
+        // Nu de duplicates vinden
+        for (int i = 0; i <= primeLength - 1; i++) {
+            for (int j = i + 1; j <= primeLength - 2; j++) {
+                if(p.charAt(i) == p.charAt(j)) {
+                    String numberLeft = getNumberLeft(p, i, j);
+                    PrimeFamily pf = new PrimeFamily(primeLength, p.charAt(i) - 48, new Integer(numberLeft).intValue(), new Integer[]{i, j});
+                    List<Prime> primes = m_primeFamilies.get(pf);
+                    if (primes == null) {
+                        primes = new ArrayList<>();
+                        m_primeFamilies.put(pf, primes);
+                    }
+                    primes.add(new Prime(prime));
+                }
+            }
         }
     }
 
