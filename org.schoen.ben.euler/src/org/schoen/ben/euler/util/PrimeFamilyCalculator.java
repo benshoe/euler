@@ -12,9 +12,7 @@ import java.util.Map;
  */
 public class PrimeFamilyCalculator {
     private static PrimeFamilyCalculator m_instance = new PrimeFamilyCalculator();
-    private static BigInteger m_prime;
-
-    private List<PrimeFamily> m_primeFamilies = new ArrayList<>();
+    private static Map<PrimeFamily,List<Prime>> m_primeFamilies = new HashMap<>();
 
     public static PrimeFamilyCalculator getInstance() {
         return m_instance;
@@ -23,34 +21,36 @@ public class PrimeFamilyCalculator {
     private PrimeFamilyCalculator() {
     }
 
-    public static List<PrimeFamily> getPrimeFamilies(BigInteger prime) {
-        m_prime= prime;
-        Map<Integer, List<Integer>> duplicateNumbers = findDuplicateNumbers(prime.toString());
-        return createFamilies(duplicateNumbers);
+    public static Map<PrimeFamily, List<Prime>> getPrimeFamilies() {
+        return m_primeFamilies;
     }
 
-    private static List<PrimeFamily> createFamilies(Map<Integer, List<Integer>> duplicateNumbers) {
-        for(Map.Entry entry: duplicateNumbers.entrySet()){
-            List<Integer> positions = (List<Integer>) entry.getValue();
-            if (positions.size() > 1) {
-                PrimeFamily pf = new PrimeFamily(m_prime.toString().length(), ((Integer) entry.getKey()).intValue(), 534, (Integer[]) positions.toArray());
+    private static String getNumberLeft(String prime, int... pos) {
+        String numberLeft = "";
+        for (int i = 0; i <= prime.length() - 1; i++) {
+            for (int p : pos) {
+                if (i != p)
+                    numberLeft += prime.charAt(i);
             }
         }
-        return null;
+        return numberLeft;
     }
 
-    private static Map<Integer, List<Integer>> findDuplicateNumbers(String s) {
-        Map<Integer, List<Integer>> numbers = new HashMap<>();
-        for(int i = 0; i<s.length(); i++){
-            Integer number = Integer.valueOf(s.charAt(i));
-            List<Integer> positions = numbers.get(number);
-            if(positions == null) {
-                positions = new ArrayList<>();
-                positions.add(i);
-                numbers.put(number, positions);
+    public static void addPrime(BigInteger prime) {
+        String p = prime.toString();
+        for (int i = 0; i <= p.length() - 1; i++) {
+            String numberLeft = getNumberLeft(p, i);
+            PrimeFamily pf = new PrimeFamily(p.length(), p.charAt(i) - 48, new Integer(numberLeft).intValue(), new Integer[]{i});
+            List<Prime> primes = m_primeFamilies.get(pf);
+            if (primes == null) {
+                primes = new ArrayList<>();
+                m_primeFamilies.put(pf, primes);
             }
-            positions.add(i);
+            primes.add(new Prime(prime));
         }
-        return numbers;
+    }
+
+    public void clear() {
+        m_primeFamilies = new HashMap<>();
     }
 }
