@@ -21,3 +21,4 @@ RemoteSystemsTempFiles
 /out
 */out
 out
+.idea/workspace.xml
