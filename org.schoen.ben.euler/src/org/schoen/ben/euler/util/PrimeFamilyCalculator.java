@@ -38,7 +38,7 @@ public class PrimeFamilyCalculator {
     public static void addPrime(BigInteger prime) {
         String p = prime.toString();
         int primeLength = p.length();
-        for (int i = 0; i <= primeLength - 1; i++) {
+        /*for (int i = 0; i <= primeLength - 1; i++) {
             String numberLeft = getNumberLeft(p, i);
             PrimeFamily pf = new PrimeFamily(primeLength, p.charAt(i) - 48, new Integer(numberLeft).intValue(), new Integer[]{i});
             List<Prime> primes = m_primeFamilies.get(pf);
@@ -47,9 +47,9 @@ public class PrimeFamilyCalculator {
                 m_primeFamilies.put(pf, primes);
             }
             primes.add(new Prime(prime));
-        }
+        }*/
         // Nu de duplicates vinden
-        for (int i = 0; i <= primeLength - 1; i++) {
+        for (int i = 0; i <= primeLength - 2; i++) {
             for (int j = i + 1; j <= primeLength - 2; j++) {
                 if(p.charAt(i) == p.charAt(j)) {
                     String numberLeft = getNumberLeft(p, i, j);
