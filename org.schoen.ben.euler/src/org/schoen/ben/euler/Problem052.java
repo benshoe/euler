@@ -16,17 +16,19 @@ public class Problem052 extends AbstractEulerProblem {
     public void run() {
         boolean found = false;
         long x = 1L;
-        while(!found) {
-            long x2 = 2*x;
-            long x3 = 3*x;
-            if(compare(x2, x3)) {
-                long x4 = 4 * x;
-                if(compare(x3, x4)) {
-                    long x5 = 5*x;
-                    if(compare(x4, x5)) {
-                        long x6 = 6*x;
-                        if(compare(x5, x6)) {
-                            found = true;
+        while (!found) {
+            if (String.valueOf(x).contains("5")) {
+                long x2 = 2 * x;
+                long x3 = 3 * x;
+                if (compare(x2, x3)) {
+                    long x4 = 4 * x;
+                    if (compare(x3, x4)) {
+                        long x5 = 5 * x;
+                        if (compare(x4, x5)) {
+                            long x6 = 6 * x;
+                            if (compare(x5, x6)) {
+                                found = true;
+                            }
                         }
                     }
                 }
@@ -38,8 +40,8 @@ public class Problem052 extends AbstractEulerProblem {
 
     private boolean compare(long x1, long x2) {
         long[] permutations = PermutationUtil.getPermutations(x1);
-        for(long perm: permutations) {
-            if(perm == x2)
+        for (long perm : permutations) {
+            if (perm == x2)
                 return true;
         }
         return false;
