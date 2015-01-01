@@ -29,6 +29,24 @@ public class PrimeFamilyFinder {
         return numberOfPrimeFamilyMembers;
     }
 
+    public static int getNumberOfPrimeFamilyMembers(String prime, int valueToReplace) {
+        m_primes = new ArrayList<>();
+        StringBuilder sb;
+        String s = prime;
+        int numberOfPrimeFamilyMembers = 0;
+        for (int i = 0; i < 10; i++) {
+            sb = new StringBuilder(prime);
+            s = prime.replaceAll(String.valueOf(valueToReplace), String.valueOf(i));
+            if(PrimeUtil.isPrime(Long.valueOf(s).longValue())) {
+                if(s.charAt(0)!='0') {
+                    numberOfPrimeFamilyMembers++;
+                    addPrime(s);
+                }
+            }
+        }
+        return numberOfPrimeFamilyMembers;
+    }
+
     private static void addPrime(String s) {
         m_primes.add(s);
     }

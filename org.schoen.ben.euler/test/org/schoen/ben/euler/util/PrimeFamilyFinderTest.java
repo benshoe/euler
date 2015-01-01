@@ -7,7 +7,7 @@ public class PrimeFamilyFinderTest {
 
     @Test
     public void testGetNumberOfPrimeFamilyMembers() throws Exception {
-        int familyMembers = PrimeFamilyFinder.getNumberOfPrimeFamilyMembers("13", 0);
+        int familyMembers = PrimeFamilyFinder.getNumberOfPrimeFamilyMembers("13", 1);
         Assert.assertEquals("Zes members verwacht", 6, familyMembers);
     }
 }

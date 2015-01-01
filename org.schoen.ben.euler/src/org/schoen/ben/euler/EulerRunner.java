@@ -57,8 +57,8 @@ public class EulerRunner {
 		//		m_problems.add(new Problem048("9110846700"));
 		//		m_problems.add(new Problem049("296962999629"));
 		//		m_problems.add(new Problem050("997651"));
-		m_problems.add(new Problem051(""));
-		m_problems.add(new Problem052("142857"));
+		m_problems.add(new Problem051("121313"));
+//		m_problems.add(new Problem052("142857"));
 	}
 
 	public static void main(String[] args) {
