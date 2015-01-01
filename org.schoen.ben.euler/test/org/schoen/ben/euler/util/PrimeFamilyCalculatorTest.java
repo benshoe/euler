@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -17,14 +16,14 @@ public class PrimeFamilyCalculatorTest {
 
     @Test
     public void testGetPrimeFamilies() throws Exception {
-        PrimeFamilyCalculator.addPrime(new BigInteger("47"));
+        PrimeFamilyCalculator.addPrime(47L);
         Map<PrimeFamily, List<Prime>> primeFamilies = PrimeFamilyCalculator.getPrimeFamilies();
         Assert.assertEquals("2 PrimeFamily gevonden", 2, primeFamilies.size());
     }
 
     @Test
     public void testGetPrimeFamilies2() throws Exception {
-        PrimeFamilyCalculator.addPrime(new BigInteger("471"));
+        PrimeFamilyCalculator.addPrime(471L);
         Map<PrimeFamily, List<Prime>> primeFamilies = PrimeFamilyCalculator.getPrimeFamilies();
         System.out.println(primeFamilies);
         Assert.assertEquals("3 PrimeFamily gevonden", 3, primeFamilies.size());
@@ -32,9 +31,9 @@ public class PrimeFamilyCalculatorTest {
 
     @Test
     public void testFamiliesBelow100() {
-        for (int i = 11; i < 100; i +=2) {
+        for (long i = 11; i < 100; i +=2) {
             if(PrimeUtil.isPrime(i)) {
-                PrimeFamilyCalculator.addPrime(new BigInteger(String.valueOf(i)));
+                PrimeFamilyCalculator.addPrime(i);
             }
         }
         Map<PrimeFamily, List<Prime>> primeFamilies = PrimeFamilyCalculator.getPrimeFamilies();
@@ -57,9 +56,9 @@ public class PrimeFamilyCalculatorTest {
 
     @Test
     public void testTwoDuplicateNumbers() {
-        for (int i = 56003; i < 56995; i +=2) {
+        for (long i = 56003; i < 56995; i +=2) {
             if(PrimeUtil.isPrime(i)) {
-                PrimeFamilyCalculator.addPrime(new BigInteger(String.valueOf(i)));
+                PrimeFamilyCalculator.addPrime(i);
             }
         }
         Map<PrimeFamily, List<Prime>> primeFamilies = PrimeFamilyCalculator.getPrimeFamilies();

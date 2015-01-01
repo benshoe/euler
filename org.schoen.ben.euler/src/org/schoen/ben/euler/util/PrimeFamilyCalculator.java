@@ -1,6 +1,5 @@
 package org.schoen.ben.euler.util;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -25,18 +24,18 @@ public class PrimeFamilyCalculator {
         return m_primeFamilies;
     }
 
-    private static String getNumberLeft(String prime, int... pos) {
+    private static int getNumberLeft(String prime, int... pos) {
         StringBuilder numberLeft = new StringBuilder(prime);
         int counter = 0;
         for (int p : pos) {
             numberLeft.deleteCharAt(p-counter);
             counter++;
         }
-        return numberLeft.toString();
+        return Integer.valueOf(numberLeft.toString()).intValue();
     }
 
-    public static void addPrime(BigInteger prime) {
-        String p = prime.toString();
+    public static void addPrime(long prime) {
+        String p = Long.valueOf(prime).toString();
         int primeLength = p.length();
         /*for (int i = 0; i <= primeLength - 1; i++) {
             String numberLeft = getNumberLeft(p, i);
@@ -52,8 +51,8 @@ public class PrimeFamilyCalculator {
         for (int i = 0; i <= primeLength - 2; i++) {
             for (int j = i + 1; j <= primeLength - 2; j++) {
                 if(p.charAt(i) == p.charAt(j)) {
-                    String numberLeft = getNumberLeft(p, i, j);
-                    PrimeFamily pf = new PrimeFamily(primeLength, p.charAt(i) - 48, new Integer(numberLeft).intValue(), new Integer[]{i, j});
+                    int numberLeft = getNumberLeft(p, i, j);
+                    PrimeFamily pf = new PrimeFamily(primeLength, p.charAt(i) - 48, numberLeft, new Integer[]{i, j});
                     List<Prime> primes = m_primeFamilies.get(pf);
                     if (primes == null) {
                         primes = new ArrayList<>();

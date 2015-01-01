@@ -5,7 +5,6 @@ import org.schoen.ben.euler.util.PrimeFamily;
 import org.schoen.ben.euler.util.PrimeFamilyCalculator;
 import org.schoen.ben.euler.util.PrimeUtil;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +35,7 @@ public class Problem051 extends AbstractEulerProblem {
 	@Override
 	public void run() {
 		PrimeFamily primeFamily = null;
-		int i = 11;
+		long i = 10000001;
 		int counter = 1;
 		int familySize = 0;
 		while(familySize < 8) {
@@ -45,9 +44,10 @@ public class Problem051 extends AbstractEulerProblem {
 				familySize = PrimeFamilyCalculator.getPrimeFamilies().get(primeFamily).size();
 				System.out.println(counter);
 				System.out.println(PrimeFamilyCalculator.getPrimeFamilies().get(primeFamily));
+				System.out.println("Huidig priemgetal: " + i);
 			}
 			if (PrimeUtil.isPrime(i)) {
-				PrimeFamilyCalculator.addPrime(new BigInteger(Integer.valueOf(i).toString()));
+				PrimeFamilyCalculator.addPrime(i);
 			}
 			i += 2;
 			counter += 1;
