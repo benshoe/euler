@@ -26,10 +26,7 @@ public class PokerGame {
 
     private PokerPlayer determineWinner() {
         PokerPlayer winner;
-        List<PokerHand> pokerHands = new ArrayList<>();
-        for (PokerPlayer player: m_players) {
-            pokerHands.add(player.getPokerHand());
-        }
+
         return m_players.get(0);
     }
 }
