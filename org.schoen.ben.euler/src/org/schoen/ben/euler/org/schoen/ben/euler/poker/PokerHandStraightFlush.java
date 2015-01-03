@@ -5,7 +5,7 @@ package org.schoen.ben.euler.org.schoen.ben.euler.poker;
  * @since 1/3/15.
  */
 public final class PokerHandStraightFlush implements IPokerHandType {
-    private final int m_value = 800;
+    private static final int VALUE = 800;
     private int m_highestValue;
 
     public PokerHandStraightFlush(CardValue highestCardValue) {
@@ -14,6 +14,6 @@ public final class PokerHandStraightFlush implements IPokerHandType {
 
     @Override
     public int getValue() {
-        return m_value + m_highestValue;
+        return VALUE + m_highestValue;
     }
 }

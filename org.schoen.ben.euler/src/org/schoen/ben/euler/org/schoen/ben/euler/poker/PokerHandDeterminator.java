@@ -2,6 +2,8 @@ package org.schoen.ben.euler.org.schoen.ben.euler.poker;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
@@ -18,11 +20,27 @@ public final class PokerHandDeterminator {
                 return pht.getValue();
             }
             if (cardsAreInARow(cards)) {
-                PokerHandStraightFlush pht = new PokerHandStraightFlush(cards.get(0).getCardValue());
+                IPokerHandType pht = new PokerHandStraightFlush(cards.get(0).getCardValue());
                 return pht.getValue();
             }
         }
+        if(fourOfAKind(cards)) {
+            IPokerHandType pht = new PokerHandfourOfAKind(cards);
+            return pht.getValue();
+        }
         return -1;
+    }
+
+    private boolean fourOfAKind(List<Card> cards) {
+        Map<Integer, List<Card>> cardMap = cards.stream() //
+         .collect(Collectors.groupingBy(c -> c.getValue()));
+        for(List<Card> cardList: cardMap.values()) {
+            if(cardList.size() == 4)
+                return true;
+        }
+        System.out.println(cardMap);
+
+        return false;
     }
 
     private boolean cardsAreInARow(List<Card> cards) {
