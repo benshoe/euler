@@ -33,7 +33,7 @@ public class Problem054 extends AbstractEulerProblem {
         List<Card> cards = new ArrayList<>();
         Card c1 = new Card();
         c1.setColor(CardColor.CLUBS);
-        c1.setValue(CardValue.ACE);
+        c1.setCardValue(CardValue.ACE);
         cards.add(c1);
         ph1.setCards(cards);
         player1.setPokerHand(ph1);

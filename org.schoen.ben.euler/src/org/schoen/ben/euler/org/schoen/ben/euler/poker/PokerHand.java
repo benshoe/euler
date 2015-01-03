@@ -13,6 +13,7 @@ public class PokerHand {
         m_cards = cards;
     }
 
-
-
+    public List<Card> getCards() {
+        return m_cards;
+    }
 }
