@@ -16,3 +16,9 @@ work
 
 RemoteSystemsTempFiles
 
+#IntelliJ exclusions
+*/out/*
+/out
+*/out
+out
+.idea/workspace.xml
