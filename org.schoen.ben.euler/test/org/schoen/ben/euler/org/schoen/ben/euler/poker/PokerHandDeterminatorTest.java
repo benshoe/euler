@@ -9,7 +9,7 @@ import java.util.List;
 public class PokerHandDeterminatorTest {
 
     @Test
-    public void testGetRoyalFlushValue() throws Exception {
+    public void testRoyalFlush() throws Exception {
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(CardColor.CLUBS, CardValue.TEN));
         cards.add(new Card(CardColor.CLUBS, CardValue.JACK));
@@ -25,7 +25,7 @@ public class PokerHandDeterminatorTest {
     }
 
     @Test
-    public void testGetStraightFlushValue() throws Exception {
+    public void testStraightFlush() throws Exception {
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(CardColor.CLUBS, CardValue.SIX));
         cards.add(new Card(CardColor.CLUBS, CardValue.SEVEN));
@@ -41,7 +41,7 @@ public class PokerHandDeterminatorTest {
     }
 
     @Test
-    public void testFourOfAKindValue() throws Exception {
+    public void testFourOfAKind() throws Exception {
         List<Card> cards = new ArrayList<>();
         cards.add(new Card(CardColor.CLUBS, CardValue.SIX));
         cards.add(new Card(CardColor.SPADES, CardValue.SIX));
@@ -54,5 +54,21 @@ public class PokerHandDeterminatorTest {
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
         Assert.assertEquals("Value is 706", 706, pokerHandValue);
+    }
+
+    @Test
+    public void testFullHouse() {
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card("2H"));
+        cards.add(new Card("2D"));
+        cards.add(new Card("QH"));
+        cards.add(new Card("2C"));
+        cards.add(new Card("QS"));
+        PokerHand ph = new PokerHand();
+        ph.setCards(cards);
+
+        PokerHandDeterminator phd = new PokerHandDeterminator();
+        int pokerHandValue = phd.getPokerHandValue(ph);
+        Assert.assertEquals("Value is 602", 602, pokerHandValue);
     }
 }
