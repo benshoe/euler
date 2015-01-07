@@ -29,4 +29,29 @@ public class CardTest {
         Assert.assertEquals("The fourth card has value 5", cards.get(3).getValue(), 5);
         Assert.assertEquals("The last card has value 5", cards.get(4).getValue(), 5);
     }
+
+    @Test
+    public void testCardCreation() {
+        Card card5D = new Card("5D");
+        Assert.assertEquals("Value is 5", CardValue.FIVE, card5D.getCardValue());
+        Assert.assertEquals("Color is diamonds", CardColor.DIAMONDS, card5D.getColor());
+
+        Card cardAC = new Card("AC");
+        Assert.assertEquals("Value is ace", CardValue.ACE, cardAC.getCardValue());
+        Assert.assertEquals("Color is clubs", CardColor.CLUBS, cardAC.getColor());
+
+        Card card2S = new Card("2S");
+        Assert.assertEquals("Value is 2", CardValue.TWO, card2S.getCardValue());
+        Assert.assertEquals("Color is spades", CardColor.SPADES, card2S.getColor());
+
+        Card cardQH = new Card("QH");
+        Assert.assertEquals("Value is queen", CardValue.QUEEN, cardQH.getCardValue());
+        Assert.assertEquals("Color is hearts", CardColor.HEARTS, cardQH.getColor());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testIllegalCard() {
+        Card illegalCard = new Card("1C");
+        Assert.fail("This code should not be reached.");
+    }
 }

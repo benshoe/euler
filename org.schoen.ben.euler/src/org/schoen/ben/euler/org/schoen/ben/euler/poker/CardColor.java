@@ -16,4 +16,5 @@ public enum CardColor {
     public String getColor() {
         return m_color;
     }
+
 }
