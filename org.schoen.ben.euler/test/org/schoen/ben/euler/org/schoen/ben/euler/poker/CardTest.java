@@ -11,11 +11,11 @@ public class CardTest {
 
     @Test
     public void testOrderingCards() {
-        Card cardC5 = new Card(CardColor.CLUBS, CardValue.FIVE);
-        Card cardC7 = new Card(CardColor.CLUBS, CardValue.SEVEN);
-        Card cardH5 = new Card(CardColor.HEARTS, CardValue.FIVE);
-        Card cardCT = new Card(CardColor.CLUBS, CardValue.TEN);
-        Card cardST = new Card(CardColor.SPADES, CardValue.TEN);
+        Card cardC5 = new Card(CardSuit.CLUBS, CardValue.FIVE);
+        Card cardC7 = new Card(CardSuit.CLUBS, CardValue.SEVEN);
+        Card cardH5 = new Card(CardSuit.HEARTS, CardValue.FIVE);
+        Card cardCT = new Card(CardSuit.CLUBS, CardValue.TEN);
+        Card cardST = new Card(CardSuit.SPADES, CardValue.TEN);
         List<Card> cards = new ArrayList<>();
         cards.add(cardC5);
         cards.add(cardST);
@@ -34,19 +34,19 @@ public class CardTest {
     public void testCardCreation() {
         Card card5D = new Card("5D");
         Assert.assertEquals("Value is 5", CardValue.FIVE, card5D.getCardValue());
-        Assert.assertEquals("Color is diamonds", CardColor.DIAMONDS, card5D.getColor());
+        Assert.assertEquals("Suit is diamonds", CardSuit.DIAMONDS, card5D.getSuit());
 
         Card cardAC = new Card("AC");
         Assert.assertEquals("Value is ace", CardValue.ACE, cardAC.getCardValue());
-        Assert.assertEquals("Color is clubs", CardColor.CLUBS, cardAC.getColor());
+        Assert.assertEquals("Suit is clubs", CardSuit.CLUBS, cardAC.getSuit());
 
         Card card2S = new Card("2S");
         Assert.assertEquals("Value is 2", CardValue.TWO, card2S.getCardValue());
-        Assert.assertEquals("Color is spades", CardColor.SPADES, card2S.getColor());
+        Assert.assertEquals("Suit is spades", CardSuit.SPADES, card2S.getSuit());
 
         Card cardQH = new Card("QH");
         Assert.assertEquals("Value is queen", CardValue.QUEEN, cardQH.getCardValue());
-        Assert.assertEquals("Color is hearts", CardColor.HEARTS, cardQH.getColor());
+        Assert.assertEquals("Suit is hearts", CardSuit.HEARTS, cardQH.getSuit());
     }
 
     @Test(expected = IllegalArgumentException.class)

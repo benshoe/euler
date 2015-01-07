@@ -14,7 +14,7 @@ public final class PokerHandDeterminator {
     public int getPokerHandValue(PokerHand pokerHand) {
         List<Card> cards = pokerHand.getCards();
         Collections.sort(cards);
-        if (cardsHaveSameColor(cards)) {
+        if (cardsHaveSameSuit(cards)) {
             if (cardsAreTenThroughAce(cards)) {
                 IPokerHandType pht = new PokerHandRoyalFlush();
                 return pht.getValue();
@@ -40,9 +40,9 @@ public final class PokerHandDeterminator {
     }
 
     private boolean allSameSuit(List<Card> cards) {
-        CardColor cc = cards.get(0).getColor();
+        CardSuit cc = cards.get(0).getSuit();
         for (int i = 1; i < 4; i++) {
-            if(cards.get(i).getColor() != cc)
+            if(cards.get(i).getSuit() != cc)
                 return false;
         }
         return true;
@@ -87,10 +87,10 @@ public final class PokerHandDeterminator {
         return true;
     }
 
-    private boolean cardsHaveSameColor(List<Card> cards) {
-        CardColor cc = cards.get(0).getColor();
+    private boolean cardsHaveSameSuit(List<Card> cards) {
+        CardSuit cc = cards.get(0).getSuit();
         for (int i = 1; i < cards.size(); i++) {
-            if (cards.get(i).getColor() != cc)
+            if (cards.get(i).getSuit() != cc)
                 return false;
         }
         return true;

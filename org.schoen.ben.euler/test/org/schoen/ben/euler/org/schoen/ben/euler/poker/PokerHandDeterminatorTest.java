@@ -11,11 +11,11 @@ public class PokerHandDeterminatorTest {
     @Test
     public void testRoyalFlush() throws Exception {
         List<Card> cards = new ArrayList<>();
-        cards.add(new Card(CardColor.CLUBS, CardValue.TEN));
-        cards.add(new Card(CardColor.CLUBS, CardValue.JACK));
-        cards.add(new Card(CardColor.CLUBS, CardValue.QUEEN));
-        cards.add(new Card(CardColor.CLUBS, CardValue.KING));
-        cards.add(new Card(CardColor.CLUBS, CardValue.ACE));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.TEN));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.JACK));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.QUEEN));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.KING));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.ACE));
         PokerHand ph = new PokerHand();
         ph.setCards(cards);
 
@@ -27,11 +27,11 @@ public class PokerHandDeterminatorTest {
     @Test
     public void testStraightFlush() throws Exception {
         List<Card> cards = new ArrayList<>();
-        cards.add(new Card(CardColor.CLUBS, CardValue.SIX));
-        cards.add(new Card(CardColor.CLUBS, CardValue.SEVEN));
-        cards.add(new Card(CardColor.CLUBS, CardValue.EIGHT));
-        cards.add(new Card(CardColor.CLUBS, CardValue.NINE));
-        cards.add(new Card(CardColor.CLUBS, CardValue.TEN));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.SIX));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.SEVEN));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.EIGHT));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.NINE));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.TEN));
         PokerHand ph = new PokerHand();
         ph.setCards(cards);
 
@@ -43,11 +43,11 @@ public class PokerHandDeterminatorTest {
     @Test
     public void testFourOfAKind() throws Exception {
         List<Card> cards = new ArrayList<>();
-        cards.add(new Card(CardColor.CLUBS, CardValue.SIX));
-        cards.add(new Card(CardColor.SPADES, CardValue.SIX));
-        cards.add(new Card(CardColor.HEARTS, CardValue.SIX));
-        cards.add(new Card(CardColor.DIAMONDS, CardValue.SIX));
-        cards.add(new Card(CardColor.CLUBS, CardValue.EIGHT));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.SIX));
+        cards.add(new Card(CardSuit.SPADES, CardValue.SIX));
+        cards.add(new Card(CardSuit.HEARTS, CardValue.SIX));
+        cards.add(new Card(CardSuit.DIAMONDS, CardValue.SIX));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.EIGHT));
         PokerHand ph = new PokerHand();
         ph.setCards(cards);
 
