@@ -28,7 +28,22 @@ public final class PokerHandDeterminator {
             IPokerHandType pht = new PokerHandfourOfAKind(cards);
             return pht.getValue();
         }
+        if(fullHouse(cards)) {
+            IPokerHandType pht = new PokerHandFullHouse(cards);
+            return pht.getValue();
+        }
         return -1;
+    }
+
+    private boolean fullHouse(List<Card> cards) {
+        Map<Integer, List<Card>> cardMap = cards.stream() //
+                .collect(Collectors.groupingBy(c -> c.getValue()));
+        if(cardMap.values().size() == 2) {
+            // We hebben al gecontroleerd of er sprake is van four of a kind.
+            //  Aangezien dat niet zo is, moet het wel een compbinatie zijn van 2 om 3 gelijken dus een full house.
+            return true;
+        }
+        return false;
     }
 
     private boolean fourOfAKind(List<Card> cards) {
@@ -38,8 +53,6 @@ public final class PokerHandDeterminator {
             if(cardList.size() == 4)
                 return true;
         }
-        System.out.println(cardMap);
-
         return false;
     }
 
