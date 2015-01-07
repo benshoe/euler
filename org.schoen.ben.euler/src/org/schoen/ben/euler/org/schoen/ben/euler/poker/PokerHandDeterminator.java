@@ -32,7 +32,20 @@ public final class PokerHandDeterminator {
             IPokerHandType pht = new PokerHandFullHouse(cards);
             return pht.getValue();
         }
+        if(allSameSuit(cards)) {
+            IPokerHandType pht = new PokerHandFlush(cards.get(4).getValue());
+            return pht.getValue();
+        }
         return -1;
+    }
+
+    private boolean allSameSuit(List<Card> cards) {
+        CardColor cc = cards.get(0).getColor();
+        for (int i = 1; i < 4; i++) {
+            if(cards.get(i).getColor() != cc)
+                return false;
+        }
+        return true;
     }
 
     private boolean fullHouse(List<Card> cards) {
