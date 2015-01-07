@@ -71,4 +71,20 @@ public class PokerHandDeterminatorTest {
         int pokerHandValue = phd.getPokerHandValue(ph);
         Assert.assertEquals("Value is 602", 602, pokerHandValue);
     }
+
+    @Test
+    public void testFlush() {
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card("3H"));
+        cards.add(new Card("9H"));
+        cards.add(new Card("2H"));
+        cards.add(new Card("KH"));
+        cards.add(new Card("QH"));
+        PokerHand ph = new PokerHand();
+        ph.setCards(cards);
+
+        PokerHandDeterminator phd = new PokerHandDeterminator();
+        int pokerHandValue = phd.getPokerHandValue(ph);
+        Assert.assertEquals("Value is 502", 502, pokerHandValue);
+    }
 }
