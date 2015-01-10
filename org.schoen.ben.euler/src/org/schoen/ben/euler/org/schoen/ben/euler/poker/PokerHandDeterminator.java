@@ -36,6 +36,10 @@ public final class PokerHandDeterminator {
             IPokerHandType pht = new PokerHandFlush(cards.get(4).getValue());
             return pht.getValue();
         }
+        if(cardsAreInARow(cards)) {
+            IPokerHandType pht = new PokerHandStraight(cards.get(4).getValue());
+            return pht.getValue();
+        }
         return -1;
     }
 
