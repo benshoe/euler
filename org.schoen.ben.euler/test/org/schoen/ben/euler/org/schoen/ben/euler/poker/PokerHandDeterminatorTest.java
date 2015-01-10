@@ -102,6 +102,21 @@ public class PokerHandDeterminatorTest {
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
         Assert.assertEquals("Value is 409", 409, pokerHandValue);
+    }
 
+    @Test
+    public void testThreeOfAKind() {
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card(CardSuit.CLUBS, CardValue.SEVEN));
+        cards.add(new Card(CardSuit.SPADES, CardValue.SIX));
+        cards.add(new Card(CardSuit.HEARTS, CardValue.SIX));
+        cards.add(new Card(CardSuit.DIAMONDS, CardValue.SIX));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.EIGHT));
+        PokerHand ph = new PokerHand();
+        ph.setCards(cards);
+
+        PokerHandDeterminator phd = new PokerHandDeterminator();
+        int pokerHandValue = phd.getPokerHandValue(ph);
+        Assert.assertEquals("Value is 206", 206, pokerHandValue);
     }
 }

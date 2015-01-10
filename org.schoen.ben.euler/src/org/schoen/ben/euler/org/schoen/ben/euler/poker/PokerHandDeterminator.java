@@ -24,7 +24,7 @@ public final class PokerHandDeterminator {
                 return pht.getValue();
             }
         }
-        if(fourOfAKind(cards)) {
+        if(moreOfAKind(cards, 4)) {
             IPokerHandType pht = new PokerHandfourOfAKind(cards);
             return pht.getValue();
         }
@@ -39,6 +39,11 @@ public final class PokerHandDeterminator {
         if(cardsAreInARow(cards)) {
             IPokerHandType pht = new PokerHandStraight(cards.get(4).getValue());
             return pht.getValue();
+        }
+        if(moreOfAKind(cards, 3)) {
+            IPokerHandType pht = new PokerHandThreeOfAKind(cards);
+            return pht.getValue();
+
         }
         return -1;
     }
@@ -63,11 +68,11 @@ public final class PokerHandDeterminator {
         return false;
     }
 
-    private boolean fourOfAKind(List<Card> cards) {
+    private boolean moreOfAKind(List<Card> cards, int sameOfAKind) {
         Map<Integer, List<Card>> cardMap = cards.stream() //
          .collect(Collectors.groupingBy(c -> c.getValue()));
         for(List<Card> cardList: cardMap.values()) {
-            if(cardList.size() == 4)
+            if(cardList.size() == sameOfAKind)
                 return true;
         }
         return false;
