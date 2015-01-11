@@ -166,5 +166,7 @@ public class PokerHandDeterminatorTest {
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
         Assert.assertEquals("Value is 11", 11, pokerHandValue);
+        IPokerHandType pht = phd.getPokerHandType(ph);
+        Assert.assertEquals("PokerHandType is PokerHandHighCard", PokerHandHighCard.class, pht.getClass());
     }
 }

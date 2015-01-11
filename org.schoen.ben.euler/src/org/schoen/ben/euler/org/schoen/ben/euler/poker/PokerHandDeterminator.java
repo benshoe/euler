@@ -11,48 +11,44 @@ import java.util.stream.Collectors;
  */
 public final class PokerHandDeterminator {
 
-    public int getPokerHandValue(PokerHand pokerHand) {
+    public IPokerHandType getPokerHandType(PokerHand pokerHand) {
         List<Card> cards = pokerHand.getCards();
         Collections.sort(cards);
         if (cardsHaveSameSuit(cards)) {
             if (cardsAreTenThroughAce(cards)) {
-                IPokerHandType pht = new PokerHandRoyalFlush();
-                return pht.getValue();
+                return new PokerHandRoyalFlush();
             }
             if (cardsAreInARow(cards)) {
-                IPokerHandType pht = new PokerHandStraightFlush(cards.get(0).getCardValue());
-                return pht.getValue();
+                return new PokerHandStraightFlush(cards.get(0).getCardValue());
             }
         }
         if(moreOfAKind(cards, 4)) {
-            IPokerHandType pht = new PokerHandFourOfAKind(cards);
-            return pht.getValue();
+            return new PokerHandFourOfAKind(cards);
         }
         if(fullHouse(cards)) {
-            IPokerHandType pht = new PokerHandFullHouse(cards);
-            return pht.getValue();
+            return new PokerHandFullHouse(cards);
         }
         if(allSameSuit(cards)) {
-            IPokerHandType pht = new PokerHandFlush(cards.get(4).getValue());
-            return pht.getValue();
+            return new PokerHandFlush(cards.get(4).getValue());
         }
         if(cardsAreInARow(cards)) {
-            IPokerHandType pht = new PokerHandStraight(cards.get(4).getValue());
-            return pht.getValue();
+            return new PokerHandStraight(cards.get(4).getValue());
         }
         if(moreOfAKind(cards, 3)) {
-            IPokerHandType pht = new PokerHandThreeOfAKind(cards);
-            return pht.getValue();
+            return new PokerHandThreeOfAKind(cards);
         }
         if(twoPairs(cards)) {
-            IPokerHandType pht = new PokerHandTwoPairs(cards);
-            return pht.getValue();
+            return new PokerHandTwoPairs(cards);
         }
         if(onePair(cards)) {
-            IPokerHandType pht = new PokerHandOnePair(cards);
-            return pht.getValue();
+            return new PokerHandOnePair(cards);
         }
-        return cards.get(0).getValue();
+        return new PokerHandHighCard(cards);
+
+    }
+
+    public int getPokerHandValue(PokerHand pokerHand) {
+        return getPokerHandType(pokerHand).getValue();
     }
 
     private boolean onePair(List<Card> cards) {
