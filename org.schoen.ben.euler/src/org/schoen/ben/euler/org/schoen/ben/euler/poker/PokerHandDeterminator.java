@@ -43,9 +43,18 @@ public final class PokerHandDeterminator {
         if(moreOfAKind(cards, 3)) {
             IPokerHandType pht = new PokerHandThreeOfAKind(cards);
             return pht.getValue();
-
+        }
+        if(twoPairs(cards)) {
+            IPokerHandType pht = new PokerHandTwoPairs(cards);
+            return pht.getValue();
         }
         return -1;
+    }
+
+    private boolean twoPairs(List<Card> cards) {
+        Map<Integer, List<Card>> cardMap = cards.stream() //
+                .collect(Collectors.groupingBy(c -> c.getValue()));
+        return cardMap.size() == 3;
     }
 
     private boolean allSameSuit(List<Card> cards) {

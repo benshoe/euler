@@ -119,4 +119,20 @@ public class PokerHandDeterminatorTest {
         int pokerHandValue = phd.getPokerHandValue(ph);
         Assert.assertEquals("Value is 306", 306, pokerHandValue);
     }
+
+    @Test
+    public void testTwoPairs() {
+        List<Card> cards = new ArrayList<>();
+        cards.add(new Card(CardSuit.CLUBS, CardValue.JACK));
+        cards.add(new Card(CardSuit.SPADES, CardValue.NINE));
+        cards.add(new Card(CardSuit.HEARTS, CardValue.NINE));
+        cards.add(new Card(CardSuit.DIAMONDS, CardValue.JACK));
+        cards.add(new Card(CardSuit.CLUBS, CardValue.EIGHT));
+        PokerHand ph = new PokerHand();
+        ph.setCards(cards);
+
+        PokerHandDeterminator phd = new PokerHandDeterminator();
+        int pokerHandValue = phd.getPokerHandValue(ph);
+        Assert.assertEquals("Value is 209", 209, pokerHandValue);
+    }
 }
