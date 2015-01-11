@@ -117,6 +117,6 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 206", 206, pokerHandValue);
+        Assert.assertEquals("Value is 306", 306, pokerHandValue);
     }
 }

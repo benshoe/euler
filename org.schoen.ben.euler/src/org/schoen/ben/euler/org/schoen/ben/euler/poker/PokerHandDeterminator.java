@@ -25,7 +25,7 @@ public final class PokerHandDeterminator {
             }
         }
         if(moreOfAKind(cards, 4)) {
-            IPokerHandType pht = new PokerHandfourOfAKind(cards);
+            IPokerHandType pht = new PokerHandFourOfAKind(cards);
             return pht.getValue();
         }
         if(fullHouse(cards)) {
