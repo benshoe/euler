@@ -52,7 +52,7 @@ public final class PokerHandDeterminator {
             IPokerHandType pht = new PokerHandOnePair(cards);
             return pht.getValue();
         }
-        return -1;
+        return cards.get(0).getValue();
     }
 
     private boolean onePair(List<Card> cards) {
