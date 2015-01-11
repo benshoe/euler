@@ -7,7 +7,7 @@ import java.util.List;
  * @since 1/11/15.
  */
 public class PokerHandOnePair implements IPokerHandType {
-    private static final int VALUE = 100;
+    private static final int VALUE = 1000000;
     private int m_value;
 
     public PokerHandOnePair(List<Card> cards) {

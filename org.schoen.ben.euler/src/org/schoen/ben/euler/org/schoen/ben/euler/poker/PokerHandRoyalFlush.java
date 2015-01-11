@@ -5,7 +5,7 @@ package org.schoen.ben.euler.org.schoen.ben.euler.poker;
  * @since 1/3/15.
  */
 public class PokerHandRoyalFlush implements IPokerHandType {
-    private static final int VALUE = 900;
+    private static final int VALUE = 9000000;
 
     @Override
     public int getValue() {

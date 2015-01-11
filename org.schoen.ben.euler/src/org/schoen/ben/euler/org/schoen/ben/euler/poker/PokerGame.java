@@ -25,8 +25,20 @@ public class PokerGame {
     }
 
     private PokerPlayer determineWinner() {
-        PokerPlayer winner;
+        PokerPlayer winner = new PokerPlayer("Undefined");
 
-        return m_players.get(0);
+        PokerHandDeterminator phd = new PokerHandDeterminator();
+        int maxValue = 0;
+        for(PokerPlayer pp: m_players) {
+            int value = phd.getPokerHandValue(pp.getPokerHand());
+            if(value == maxValue) {
+                throw new IllegalStateException("We should not have a tie");
+            } else if(value > maxValue) {
+                maxValue = value;
+                winner = pp;
+            }
+        }
+
+        return winner;
     }
 }

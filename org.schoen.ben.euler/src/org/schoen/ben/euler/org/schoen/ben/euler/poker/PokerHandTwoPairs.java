@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  * @since 1/11/15.
  */
 public class PokerHandTwoPairs implements IPokerHandType {
-    private static final int VALUE = 200;
+    private static final int VALUE = 2000000;
     private int m_value;
 
     public PokerHandTwoPairs(List<Card> cards) {

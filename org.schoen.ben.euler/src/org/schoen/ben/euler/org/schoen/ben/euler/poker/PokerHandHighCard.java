@@ -10,7 +10,9 @@ public class PokerHandHighCard implements IPokerHandType {
     private int m_value;
 
     public PokerHandHighCard(List<Card> cards) {
-        m_value = cards.get(0).getValue();
+        for (int i = 0; i < cards.size(); i++) {
+            m_value += cards.get(i).getValue() * Math.pow(10, cards.size() - 1 - i);
+        }
     }
 
     @Override

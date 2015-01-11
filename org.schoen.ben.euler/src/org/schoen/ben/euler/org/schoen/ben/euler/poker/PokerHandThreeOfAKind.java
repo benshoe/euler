@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  */
 public class PokerHandThreeOfAKind implements IPokerHandType {
 
-    private static final int VALUE = 300;
+    private static final int VALUE = 3000000;
     private int m_value;
 
     public PokerHandThreeOfAKind(List<Card> cards) {

@@ -39,7 +39,6 @@ public class Problem054 extends AbstractEulerProblem {
         BufferedReader bufferedReader = FileUtil.readFile("File054.txt");
         List<String> dealtCards = bufferedReader.lines().flatMap(s -> Stream.of(s.split(REGEXP))).collect(Collectors.toList());
 
-        PokerHandDeterminator pokerHandDeterminator = new PokerHandDeterminator();
         int winsP1 = 0;
         int counter = 0;
         while(counter < 10000) {
@@ -57,15 +56,9 @@ public class Problem054 extends AbstractEulerProblem {
                 counter++;
             }
             ph2.setCards(cardsP2);
-            printPokerhand(ph1, pokerHandDeterminator, "Player 1: ");
-            printPokerhand(ph2, pokerHandDeterminator, "Player 2: ");
-            System.out.println();
-            int p1Value = pokerHandDeterminator.getPokerHandValue(ph1);
-            int p2Value = pokerHandDeterminator.getPokerHandValue(ph2);
-            if(p1Value > p2Value)
+            if(player1 == game.getWinner()) {
                 winsP1++;
-            if(p1Value == p2Value)
-                throw new IllegalStateException("Tie!!!" + counter);
+            }
         }
 
         System.out.println("Aantal spelletjes is: " + counter/10);

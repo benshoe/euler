@@ -21,7 +21,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 900", 900, pokerHandValue);
+        Assert.assertEquals("Value is 9000000", 9000000, pokerHandValue);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 810", 810, pokerHandValue);
+        Assert.assertEquals("Value is 8000010", 8000010, pokerHandValue);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 706", 706, pokerHandValue);
+        Assert.assertEquals("Value is 7000006", 7000006, pokerHandValue);
     }
 
     @Test
@@ -69,7 +69,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 602", 602, pokerHandValue);
+        Assert.assertEquals("Value is 6000002", 6000002, pokerHandValue);
     }
 
     @Test
@@ -85,7 +85,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 513", 513, pokerHandValue);
+        Assert.assertEquals("Value is 5000013", 5000013, pokerHandValue);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 413", 413, pokerHandValue);
+        Assert.assertEquals("Value is 4000013", 4000013, pokerHandValue);
     }
 
     @Test
@@ -117,7 +117,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 306", 306, pokerHandValue);
+        Assert.assertEquals("Value is 3000006", 3000006, pokerHandValue);
     }
 
     @Test
@@ -133,7 +133,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 211", 211, pokerHandValue);
+        Assert.assertEquals("Value is 2000011", 2000011, pokerHandValue);
     }
 
     @Test
@@ -149,7 +149,7 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 113", 113, pokerHandValue);
+        Assert.assertEquals("Value is 1000013", 1000013, pokerHandValue);
     }
 
     @Test
@@ -165,8 +165,41 @@ public class PokerHandDeterminatorTest {
 
         PokerHandDeterminator phd = new PokerHandDeterminator();
         int pokerHandValue = phd.getPokerHandValue(ph);
-        Assert.assertEquals("Value is 11", 11, pokerHandValue);
+        Assert.assertEquals("Value is 120982", 120982, pokerHandValue);
         IPokerHandType pht = phd.getPokerHandType(ph);
         Assert.assertEquals("PokerHandType is PokerHandHighCard", PokerHandHighCard.class, pht.getClass());
+    }
+
+    @Test
+    public void testHighCardTie() {
+        List<Card> cardsP1 = new ArrayList<>();
+        cardsP1.add(new Card(CardSuit.CLUBS, CardValue.SEVEN));
+        cardsP1.add(new Card(CardSuit.DIAMONDS, CardValue.SIX));
+        cardsP1.add(new Card(CardSuit.DIAMONDS, CardValue.FIVE));
+        cardsP1.add(new Card(CardSuit.HEARTS, CardValue.TEN));
+        cardsP1.add(new Card(CardSuit.SPADES, CardValue.THREE));
+        PokerHand ph1 = new PokerHand();
+        ph1.setCards(cardsP1);
+
+        List<Card> cardsP2 = new ArrayList<>();
+        cardsP2.add(new Card(CardSuit.CLUBS, CardValue.JACK));
+        cardsP2.add(new Card(CardSuit.CLUBS, CardValue.FIVE));
+        cardsP2.add(new Card(CardSuit.SPADES, CardValue.NINE));
+        cardsP2.add(new Card(CardSuit.DIAMONDS, CardValue.THREE));
+        cardsP2.add(new Card(CardSuit.HEARTS, CardValue.TWO));
+        PokerHand ph2 = new PokerHand();
+        ph2.setCards(cardsP2);
+
+        PokerPlayer pokerPlayer1 = new PokerPlayer("Speler 1");
+        pokerPlayer1.setPokerHand(ph1);
+        PokerPlayer pokerPlayer2 = new PokerPlayer("Speler 2");
+        pokerPlayer2.setPokerHand(ph2);
+        PokerGame game = new PokerGame();
+        game.addPlayer(pokerPlayer1);
+        game.addPlayer(pokerPlayer2);
+        PokerPlayer winner = game.getWinner();
+
+        Assert.assertEquals("Speler 2 is the winner", pokerPlayer2, winner);
+
     }
 }
