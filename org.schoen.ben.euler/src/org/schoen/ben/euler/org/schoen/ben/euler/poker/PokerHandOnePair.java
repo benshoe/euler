@@ -20,6 +20,18 @@ public class PokerHandOnePair implements IPokerHandType {
             } else
                 firstValue = secondValue;
         }
+        int tieBreakerValue = 0;
+
+        int multiplier = 2;
+        for (int i = 0; i < cards.size(); i++) {
+            if(cards.get(i).getValue() == m_value) {
+                continue;
+            }
+            tieBreakerValue += cards.get(i).getValue() * Math.pow(10, multiplier);
+            multiplier--;
+        }
+        m_value *= 10000;
+        m_value += tieBreakerValue;
     }
 
     @Override

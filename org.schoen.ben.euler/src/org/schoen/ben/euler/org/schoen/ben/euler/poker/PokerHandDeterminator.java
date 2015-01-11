@@ -28,7 +28,7 @@ public final class PokerHandDeterminator {
         if(fullHouse(cards)) {
             return new PokerHandFullHouse(cards);
         }
-        if(allSameSuit(cards)) {
+        if(cardsHaveSameSuit(cards)) {
             return new PokerHandFlush(cards.get(0).getValue());
         }
         if(cardsAreInARow(cards)) {
@@ -61,15 +61,6 @@ public final class PokerHandDeterminator {
         Map<Integer, List<Card>> cardMap = cards.stream() //
                 .collect(Collectors.groupingBy(c -> c.getValue()));
         return cardMap.size() == 3;
-    }
-
-    private boolean allSameSuit(List<Card> cards) {
-        CardSuit cc = cards.get(0).getSuit();
-        for (int i = 1; i < 4; i++) {
-            if(cards.get(i).getSuit() != cc)
-                return false;
-        }
-        return true;
     }
 
     private boolean fullHouse(List<Card> cards) {

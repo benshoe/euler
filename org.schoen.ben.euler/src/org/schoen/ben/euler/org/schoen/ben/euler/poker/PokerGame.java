@@ -18,10 +18,7 @@ public class PokerGame {
     }
 
     public PokerPlayer getWinner() {
-        if(m_winner == null) {
-            m_winner = determineWinner();
-        }
-        return m_winner;
+        return determineWinner();
     }
 
     private PokerPlayer determineWinner() {

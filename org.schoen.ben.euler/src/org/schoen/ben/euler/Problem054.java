@@ -56,9 +56,14 @@ public class Problem054 extends AbstractEulerProblem {
                 counter++;
             }
             ph2.setCards(cardsP2);
-            if(player1 == game.getWinner()) {
+//            printPokerhand(ph1, "Player 1: ");
+//            printPokerhand(ph2, "Player 2: ");
+            PokerPlayer gameWinner = game.getWinner();
+            if(player1 == gameWinner) {
                 winsP1++;
             }
+//            System.out.println(gameWinner.getPlayerName());
+//            System.out.println();
         }
 
         System.out.println("Aantal spelletjes is: " + counter/10);
@@ -66,9 +71,10 @@ public class Problem054 extends AbstractEulerProblem {
         setAnswer(String.valueOf(winsP1));
     }
 
-    private void printPokerhand(PokerHand pokerHand, PokerHandDeterminator pokerHandDeterminator, String player) {
+    private void printPokerhand(PokerHand pokerHand, String player) {
         System.out.print(player);
         pokerHand.printCards();
+        PokerHandDeterminator pokerHandDeterminator = new PokerHandDeterminator();
         System.out.println(": " + pokerHandDeterminator.getPokerHandType(pokerHand).getTypeName() + " met waarde: " + pokerHandDeterminator.getPokerHandValue(pokerHand));
     }
 
