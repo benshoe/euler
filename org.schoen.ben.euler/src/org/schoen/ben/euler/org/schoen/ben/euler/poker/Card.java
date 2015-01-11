@@ -84,4 +84,9 @@ public class Card implements Comparable<Card> {
         return 1;
     }
 
+    @Override
+    public String toString() {
+        return getValue() + " " + getSuit();
+    }
+
 }
