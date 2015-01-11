@@ -16,4 +16,9 @@ public class PokerHandFlush implements IPokerHandType {
     public int getValue() {
         return VALUE + m_lowestCardValue;
     }
+
+    @Override
+    public String getTypeName() {
+        return "Flush";
+    }
 }

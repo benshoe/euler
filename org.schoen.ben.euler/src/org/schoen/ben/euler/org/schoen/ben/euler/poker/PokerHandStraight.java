@@ -16,4 +16,9 @@ public class PokerHandStraight implements IPokerHandType {
     public int getValue() {
         return VALUE + m_value;
     }
+
+    @Override
+    public String getTypeName() {
+        return "Straight";
+    }
 }

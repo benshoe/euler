@@ -11,4 +11,9 @@ public class PokerHandRoyalFlush implements IPokerHandType {
     public int getValue() {
         return VALUE;
     }
+
+    @Override
+    public String getTypeName() {
+        return "Royal flush";
+    }
 }

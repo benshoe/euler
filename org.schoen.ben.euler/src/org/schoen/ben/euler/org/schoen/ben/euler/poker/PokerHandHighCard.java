@@ -17,4 +17,9 @@ public class PokerHandHighCard implements IPokerHandType {
     public int getValue() {
         return m_value;
     }
+
+    @Override
+    public String getTypeName() {
+        return "High card";
+    }
 }

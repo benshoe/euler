@@ -24,7 +24,6 @@ public class Problem054 extends AbstractEulerProblem {
 
     @Override
     public void run() {
-        int answer = 0;
         PokerGame game = new PokerGame();
 
         PokerPlayer player1 = new PokerPlayer("Player1");
@@ -53,25 +52,31 @@ public class Problem054 extends AbstractEulerProblem {
                 counter++;
             }
             ph1.setCards(cardsP1);
-            System.out.print("Player 1: ");
-            ph1.printCards();
-            System.out.println();
             for (int j = 0; j < 5; j++) {
                 cardsP2.add(new Card(dealtCards.get(counter)));
                 counter++;
             }
             ph2.setCards(cardsP2);
-            System.out.print("Player 2: ");
-            ph2.printCards();
+            printPokerhand(ph1, pokerHandDeterminator, "Player 1: ");
+            printPokerhand(ph2, pokerHandDeterminator, "Player 2: ");
             System.out.println();
             int p1Value = pokerHandDeterminator.getPokerHandValue(ph1);
             int p2Value = pokerHandDeterminator.getPokerHandValue(ph2);
-            System.out.println(pokerHandDeterminator.getClass());
             if(p1Value > p2Value)
                 winsP1++;
+            if(p1Value == p2Value)
+                throw new IllegalStateException("Tie!!!" + counter);
         }
 
+        System.out.println("Aantal spelletjes is: " + counter/10);
+
         setAnswer(String.valueOf(winsP1));
+    }
+
+    private void printPokerhand(PokerHand pokerHand, PokerHandDeterminator pokerHandDeterminator, String player) {
+        System.out.print(player);
+        pokerHand.printCards();
+        System.out.println(": " + pokerHandDeterminator.getPokerHandType(pokerHand).getTypeName() + " met waarde: " + pokerHandDeterminator.getPokerHandValue(pokerHand));
     }
 
     @Override

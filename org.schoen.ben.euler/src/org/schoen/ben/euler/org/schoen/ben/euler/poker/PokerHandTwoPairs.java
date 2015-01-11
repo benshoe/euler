@@ -15,10 +15,10 @@ public class PokerHandTwoPairs implements IPokerHandType {
     public PokerHandTwoPairs(List<Card> cards) {
         Map<Integer, List<Card>> cardMap = cards.stream() //
                 .collect(Collectors.groupingBy(c -> c.getValue()));
-        int minValue = 100;
+        int minValue = 0;
         for(List<Card> cardList: cardMap.values()) {
             if(cardList.size() == 2) {
-                if(cardList.get(0).getValue() < minValue)
+                if(cardList.get(0).getValue() > minValue)
                     minValue = cardList.get(0).getValue();
             }
         }
@@ -28,5 +28,10 @@ public class PokerHandTwoPairs implements IPokerHandType {
     @Override
     public int getValue() {
         return VALUE + m_value;
+    }
+
+    @Override
+    public String getTypeName() {
+        return "Two pairs";
     }
 }

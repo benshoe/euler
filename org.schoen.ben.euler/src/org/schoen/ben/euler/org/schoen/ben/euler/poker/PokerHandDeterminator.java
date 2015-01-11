@@ -29,10 +29,10 @@ public final class PokerHandDeterminator {
             return new PokerHandFullHouse(cards);
         }
         if(allSameSuit(cards)) {
-            return new PokerHandFlush(cards.get(4).getValue());
+            return new PokerHandFlush(cards.get(0).getValue());
         }
         if(cardsAreInARow(cards)) {
-            return new PokerHandStraight(cards.get(4).getValue());
+            return new PokerHandStraight(cards.get(0).getValue());
         }
         if(moreOfAKind(cards, 3)) {
             return new PokerHandThreeOfAKind(cards);

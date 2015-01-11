@@ -16,4 +16,9 @@ public final class PokerHandStraightFlush implements IPokerHandType {
     public int getValue() {
         return VALUE + m_highestValue;
     }
+
+    @Override
+    public String getTypeName() {
+        return "Straight flush";
+    }
 }

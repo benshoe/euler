@@ -26,4 +26,9 @@ public class PokerHandThreeOfAKind implements IPokerHandType {
     public int getValue() {
         return VALUE + m_value;
     }
+
+    @Override
+    public String getTypeName() {
+        return "Three of a kind";
+    }
 }
