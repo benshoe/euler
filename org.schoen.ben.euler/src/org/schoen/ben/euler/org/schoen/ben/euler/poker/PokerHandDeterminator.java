@@ -48,7 +48,17 @@ public final class PokerHandDeterminator {
             IPokerHandType pht = new PokerHandTwoPairs(cards);
             return pht.getValue();
         }
+        if(onePair(cards)) {
+            IPokerHandType pht = new PokerHandOnePair(cards);
+            return pht.getValue();
+        }
         return -1;
+    }
+
+    private boolean onePair(List<Card> cards) {
+        Map<Integer, List<Card>> cardMap = cards.stream() //
+                .collect(Collectors.groupingBy(c -> c.getValue()));
+        return cardMap.size() == 4;
     }
 
     private boolean twoPairs(List<Card> cards) {
