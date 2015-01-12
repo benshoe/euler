@@ -1,5 +1,6 @@
 package org.schoen.ben.euler.org.schoen.ben.euler.poker;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,5 +16,12 @@ public class PokerHand {
 
     public List<Card> getCards() {
         return m_cards;
+    }
+
+    public void printCards() {
+        Collections.sort(m_cards);
+        for(Card card: m_cards) {
+            System.out.print(card + ", ");
+        }
     }
 }

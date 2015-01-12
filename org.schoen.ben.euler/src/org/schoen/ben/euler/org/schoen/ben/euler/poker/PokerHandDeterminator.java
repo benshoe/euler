@@ -11,41 +11,56 @@ import java.util.stream.Collectors;
  */
 public final class PokerHandDeterminator {
 
-    public int getPokerHandValue(PokerHand pokerHand) {
+    public IPokerHandType getPokerHandType(PokerHand pokerHand) {
         List<Card> cards = pokerHand.getCards();
         Collections.sort(cards);
         if (cardsHaveSameSuit(cards)) {
             if (cardsAreTenThroughAce(cards)) {
-                IPokerHandType pht = new PokerHandRoyalFlush();
-                return pht.getValue();
+                return new PokerHandRoyalFlush();
             }
             if (cardsAreInARow(cards)) {
-                IPokerHandType pht = new PokerHandStraightFlush(cards.get(0).getCardValue());
-                return pht.getValue();
+                return new PokerHandStraightFlush(cards.get(0).getCardValue());
             }
         }
-        if(fourOfAKind(cards)) {
-            IPokerHandType pht = new PokerHandfourOfAKind(cards);
-            return pht.getValue();
+        if(moreOfAKind(cards, 4)) {
+            return new PokerHandFourOfAKind(cards);
         }
         if(fullHouse(cards)) {
-            IPokerHandType pht = new PokerHandFullHouse(cards);
-            return pht.getValue();
+            return new PokerHandFullHouse(cards);
         }
-        if(allSameSuit(cards)) {
-            IPokerHandType pht = new PokerHandFlush(cards.get(4).getValue());
-            return pht.getValue();
+        if(cardsHaveSameSuit(cards)) {
+            return new PokerHandFlush(cards.get(0).getValue());
         }
-        return -1;
+        if(cardsAreInARow(cards)) {
+            return new PokerHandStraight(cards.get(0).getValue());
+        }
+        if(moreOfAKind(cards, 3)) {
+            return new PokerHandThreeOfAKind(cards);
+        }
+        if(twoPairs(cards)) {
+            return new PokerHandTwoPairs(cards);
+        }
+        if(onePair(cards)) {
+            return new PokerHandOnePair(cards);
+        }
+        return new PokerHandHighCard(cards);
+
     }
 
-    private boolean allSameSuit(List<Card> cards) {
-        CardSuit cc = cards.get(0).getSuit();
-        for (int i = 1; i < 4; i++) {
-            if(cards.get(i).getSuit() != cc)
-                return false;
-        }
-        return true;
+    public int getPokerHandValue(PokerHand pokerHand) {
+        return getPokerHandType(pokerHand).getValue();
+    }
+
+    private boolean onePair(List<Card> cards) {
+        Map<Integer, List<Card>> cardMap = cards.stream() //
+                .collect(Collectors.groupingBy(c -> c.getValue()));
+        return cardMap.size() == 4;
+    }
+
+    private boolean twoPairs(List<Card> cards) {
+        Map<Integer, List<Card>> cardMap = cards.stream() //
+                .collect(Collectors.groupingBy(c -> c.getValue()));
+        return cardMap.size() == 3;
     }
 
     private boolean fullHouse(List<Card> cards) {
@@ -59,11 +74,11 @@ public final class PokerHandDeterminator {
         return false;
     }
 
-    private boolean fourOfAKind(List<Card> cards) {
+    private boolean moreOfAKind(List<Card> cards, int sameOfAKind) {
         Map<Integer, List<Card>> cardMap = cards.stream() //
          .collect(Collectors.groupingBy(c -> c.getValue()));
         for(List<Card> cardList: cardMap.values()) {
-            if(cardList.size() == 4)
+            if(cardList.size() == sameOfAKind)
                 return true;
         }
         return false;

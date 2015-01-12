@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  * @since 1/7/15.
  */
 public class PokerHandFullHouse implements IPokerHandType {
-    private static final int VALUE = 600;
+    private static final int VALUE = 6000000;
     private int m_extraValue;
 
     public PokerHandFullHouse(List<Card> cards) {
@@ -27,5 +27,10 @@ public class PokerHandFullHouse implements IPokerHandType {
     @Override
     public int getValue() {
         return VALUE + m_extraValue;
+    }
+
+    @Override
+    public String getTypeName() {
+        return "Full house";
     }
 }
