@@ -5,13 +5,13 @@ package org.schoen.ben.euler.org.schoen.ben.euler.poker;
  * @since 1/2/15.
  */
 public class Card implements Comparable<Card> {
-    private CardColor m_color;
+    private CardSuit m_suit;
     private CardValue m_value;
 
     public Card() {}
 
-    public Card(CardColor color, CardValue value) {
-        m_color = color;
+    public Card(CardSuit suit, CardValue value) {
+        m_suit = suit;
         m_value = value;
     }
 
@@ -21,7 +21,7 @@ public class Card implements Comparable<Card> {
      */
     public Card(String card) {
         m_value = getValue(card.charAt(0));
-        m_color = getColor(card.charAt(1));
+        m_suit = getSuit(card.charAt(1));
     }
 
     private CardValue getValue(char value) {
@@ -43,18 +43,18 @@ public class Card implements Comparable<Card> {
         }
     }
 
-    private CardColor getColor(char color) {
-        switch (color) {
-            case 'D': return CardColor.DIAMONDS;
-            case 'H': return CardColor.HEARTS;
-            case 'S': return CardColor.SPADES;
-            case 'C': return CardColor.CLUBS;
-            default: throw new IllegalArgumentException("There is no CardColor that can be created by supplying: " + color);
+    private CardSuit getSuit(char suit) {
+        switch (suit) {
+            case 'D': return CardSuit.DIAMONDS;
+            case 'H': return CardSuit.HEARTS;
+            case 'S': return CardSuit.SPADES;
+            case 'C': return CardSuit.CLUBS;
+            default: throw new IllegalArgumentException("There is no CardSuit that can be created by supplying: " + suit);
         }
     }
 
-    public void setColor(CardColor color) {
-        m_color = color;
+    public void setSuit(CardSuit suit) {
+        m_suit = suit;
     }
 
     public void setCardValue(CardValue value) {
@@ -69,8 +69,8 @@ public class Card implements Comparable<Card> {
         return m_value.getValue();
     }
 
-    public CardColor getColor() {
-        return m_color;
+    public CardSuit getSuit() {
+        return m_suit;
     }
 
     @Override

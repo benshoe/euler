@@ -4,17 +4,17 @@ package org.schoen.ben.euler.org.schoen.ben.euler.poker;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since 1/2/15.
  */
-public enum CardColor {
+public enum CardSuit {
     DIAMONDS("D"), CLUBS("C"), SPADES("S"), HEARTS("H");
 
-    private final String m_color;
+    private final String m_suit;
 
-    CardColor(String color) {
-        m_color = color;
+    CardSuit(String suit) {
+        m_suit = suit;
     }
 
-    public String getColor() {
-        return m_color;
+    public String getSuit() {
+        return m_suit;
     }
 
 }
