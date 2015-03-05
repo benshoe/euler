@@ -33,15 +33,18 @@ public class Problem059 extends AbstractEulerProblem {
 			i++;
 		}
 
+		byte a=  103;
+		byte b = 111;
+		byte c = 100;
 		StringBuilder sb = new StringBuilder();
-		for(byte a = SMALLEST_LETTER; a < LARGEST_LETTER; a++) {
-			int counter = 1;
-			for(byte b = SMALLEST_LETTER; b < LARGEST_LETTER; b++) {
-				for(byte c = SMALLEST_LETTER; c < LARGEST_LETTER; c++) {
+		//for(byte a = 103; a < 104; a++) {
+			int answer = 46; //The final character from the string ;-)
+			//for(byte b = 111; b < 112; b++) {
+			//	for(byte c = 100; c < 101; c++) {
 					//System.out.println();
 					//System.out.print("a = " + a);
 					//System.out.print("b = " + b);
-					for(int j = 0; j < intValues.length - 2; j += 3) {
+					for(int j = 0; j < intValues.length - 1; j += 3) {
 						char char1 = (char) (intValues[j] ^ a);
 						char char2 = (char) (intValues[j + 1] ^ b);
 						char char3 = (char) (intValues[j + 2] ^ c);
@@ -52,42 +55,32 @@ public class Problem059 extends AbstractEulerProblem {
 						//intValues[j] = (byte) char1;
 						//intValues[j + 1] = (byte) char2;
 						//intValues[j + 2] = (byte) char3;
-						counter++;
-						if(counter == 1201) {
-							if(containsWord(sb, "gospel")) {
-								System.out.println();
-								System.out.print("a = " + a);
-								System.out.print("; b = " + b);
-								System.out.println("; c = " + c);
-								System.out.println(sb.toString());
-
-								int nrOfSpaces = countNumberOfSpaces(sb);
-								System.out.println("counter: " + counter);
-								System.out.println();
-							}
-							counter = 1;
-							sb = new StringBuilder();
-							break;
-						}
-						if(!isLetter(char1) || !isLetter(char2) || !isLetter(char3)) {
-							counter = 1;
-							sb = new StringBuilder();
-							break;
-						}
+						answer+= char1;
+						answer+= char2;
+						answer+= char3;
+						//if(answer == 1201) {
+						//	if(containsWord(sb, "gospel")) {
+							//}
+							//answer = 1;
+							//sb = new StringBuilder();
+							//break;
+						//}
+						//if(!isLetter(char1) || !isLetter(char2) || !isLetter(char3)) {
+						//	answer = 1;
+						//	sb = new StringBuilder();
+						//	break;
+						//}
 					}
-				}
-			}
-		}
-	}
-
-	private int countNumberOfSpaces(StringBuilder sb) {
-		int spaces = 0;
-		for(int i = 0; i < sb.length(); i++) {
-			if(sb.charAt(i) == ' ')
-				spaces++;
-		}
-		System.out.println("spaces = " + spaces);
-		return spaces;
+				//}
+			//}
+		//}
+		System.out.println();
+		System.out.print("a = " + a);
+		System.out.print("; b = " + b);
+		System.out.println("; c = " + c);
+		System.out.println(sb.toString());
+		System.out.println("sb.toString().length() = " + sb.toString().length());
+		setAnswer(String.valueOf(answer));
 	}
 
 	private boolean containsWord(StringBuilder sb, String word) {
