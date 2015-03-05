@@ -54,22 +54,22 @@ public class Problem059 extends AbstractEulerProblem {
 						//intValues[j + 2] = (byte) char3;
 						counter++;
 						if(counter == 1201) {
-					System.out.println("c = " + c);
-							System.out.println();
-							System.out.print("a = " + a);
-							System.out.print("b = " + b);
-							System.out.println("c = " + c);
-							System.out.println(sb.toString());
-							//System.out.print((char) a);
-							System.out.println("counter: " + counter);
-							System.out.println();
+							if(containsWord(sb, "gospel")) {
+								System.out.println();
+								System.out.print("a = " + a);
+								System.out.print("; b = " + b);
+								System.out.println("; c = " + c);
+								System.out.println(sb.toString());
+
+								int nrOfSpaces = countNumberOfSpaces(sb);
+								System.out.println("counter: " + counter);
+								System.out.println();
+							}
 							counter = 1;
 							sb = new StringBuilder();
 							break;
 						}
 						if(!isLetter(char1) || !isLetter(char2) || !isLetter(char3)) {
-							//System.out.println("Counter: " + counter);
-
 							counter = 1;
 							sb = new StringBuilder();
 							break;
@@ -78,6 +78,20 @@ public class Problem059 extends AbstractEulerProblem {
 				}
 			}
 		}
+	}
+
+	private int countNumberOfSpaces(StringBuilder sb) {
+		int spaces = 0;
+		for(int i = 0; i < sb.length(); i++) {
+			if(sb.charAt(i) == ' ')
+				spaces++;
+		}
+		System.out.println("spaces = " + spaces);
+		return spaces;
+	}
+
+	private boolean containsWord(StringBuilder sb, String word) {
+		return sb.toString().toLowerCase().contains(word.toLowerCase());
 	}
 
 	private boolean isLetter(char i) {
