@@ -87,4 +87,26 @@ public class PermutationUtilTest {
 		Assert.assertEquals("cab", perms[4]);
 		Assert.assertEquals("cba", perms[5]);
 	}
+
+	@Test
+	public void testGetPermutationsOfLength() throws Exception {
+		int[] perms = PermutationUtil.getPermutationsOfLength(new int[0], 0);
+		Assert.assertEquals(0, perms.length);
+
+		perms = PermutationUtil.getPermutationsOfLength(new int[]{2}, 1);
+		Assert.assertEquals(1, perms.length);
+		Assert.assertArrayEquals(perms, new int[]{2});
+
+		perms = PermutationUtil.getPermutationsOfLength(new int[]{5, 8}, 1);
+		Assert.assertEquals(2, perms.length);
+		Assert.assertArrayEquals(perms, new int[]{5, 8});
+
+		perms = PermutationUtil.getPermutationsOfLength(new int[]{5, 8, 9, 2}, 1);
+		Assert.assertEquals(4, perms.length);
+		Assert.assertArrayEquals(perms, new int[]{5, 8, 9, 2});
+
+		perms = PermutationUtil.getPermutationsOfLength(new int[]{5, 8, 9, 2}, 2);
+		Assert.assertEquals(12, perms.length);
+
+	}
 }
