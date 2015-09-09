@@ -1,5 +1,8 @@
 package org.schoen.ben.euler;
 
+import org.schoen.ben.euler.util.PermutationUtil;
+import org.schoen.ben.euler.util.PrimeUtil;
+
 /**
  *
  * The primes 3, 7, 109, and 673, are quite remarkable. By taking any two primes and concatenating them in any order
@@ -17,22 +20,56 @@ public class Problem060 extends AbstractEulerProblem {
 
     @Override
     public void run() {
-        int[] primes = new int[]{3, 7, 11, 13, 17};
+        long[] primes = new long[]{3, 7, 109, 673};
         boolean found = false;
         while(!found) {
-            primes = getNewPrimeCombi(primes);
-            found = testPrimeConcats(primes);
+            long[] concatPrimes = PermutationUtil.getPermutationsOfLength2(primes);
+            found = testPrimeConcats(concatPrimes);
+            if(found && primes.length == 5) {
+                found = true;
+            }
+            else {
+                found = false;
+                primes = getNewPrimeCombi(primes);
+            }
+        }
+        for (int i = 0; i < primes.length; i++) {
+            System.out.println("primes = " + primes[i]);
         }
     }
 
-    private boolean testPrimeConcats(int[] primes) {
-
-        return false;
+    private boolean testPrimeConcats(long[] primes) {
+        for (int i = 0; i < primes.length; i++) {
+            if(!PrimeUtil.isPrime(primes[i]))
+                return false;
+        }
+        return true;
     }
 
-    private int[] getNewPrimeCombi(int[] primes) {
+    private long[] getNewPrimeCombi(long[] primes) {
+        long prime = 2;
+        if(primes.length < 5) {
+            long[] newPrimes = new long[5];
+            newPrimes[0] = primes[0];
+            newPrimes[1] = primes[1];
+            newPrimes[2] = primes[2];
+            newPrimes[3] = primes[3];
+            primes = newPrimes;
+            prime = primes[primes.length - 2];
+        } else {
+            prime = primes[primes.length - 1];
+        }
+        long newPrime = getNextPrime(prime);
+        primes[primes.length - 1] = newPrime;
+        return primes;
+    }
 
-        return new int[0];
+    private long getNextPrime(long prime) {
+        long testNumber = prime + 2;
+        while(!PrimeUtil.isPrime(testNumber)) {
+            testNumber += 2;
+        }
+        return testNumber;
     }
 
     @Override

@@ -80,17 +80,22 @@ public class PermutationUtil {
 		return perms;
 	}
 
-	public static int[] getPermutationsOfLength(int[] array, int length) {
-		if(length > array.length) {
-			throw new IllegalArgumentException("Het aantal getallen moet kleiner zijn dan de lengte van de array");
+	public static long[] getPermutationsOfLength2(long[] array) {
+		if(array.length < 2) {
+			throw new IllegalArgumentException("Het aantal getallen moet kleiner zijn dan 2");
 		}
-		if(length == 1) {
-			return array;
+
+		int numberOfPerms = array.length * (array.length - 1);
+		int counter = 0;
+		long[] newArray = new long[numberOfPerms];
+		for(int j = 0; j <= array.length - 1; j++) {
+			for (int k = 0; k <= array.length - 1; k++) {
+				if(j == k)
+					continue;
+				newArray[counter++] = Long.valueOf(Long.valueOf(array[j]) + "" + Long.valueOf(array[k])).intValue();
+			}
 		}
-		for(int i = 0; i < array.length - 1; i++) {
-			
-		}
-		return new int[0];
+		return newArray;
 	}
 
 	private static int findHighestValidK(char[] letters) {

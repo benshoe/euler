@@ -90,23 +90,21 @@ public class PermutationUtilTest {
 
 	@Test
 	public void testGetPermutationsOfLength() throws Exception {
-		int[] perms = PermutationUtil.getPermutationsOfLength(new int[0], 0);
-		Assert.assertEquals(0, perms.length);
-
-		perms = PermutationUtil.getPermutationsOfLength(new int[]{2}, 1);
-		Assert.assertEquals(1, perms.length);
-		Assert.assertArrayEquals(perms, new int[]{2});
-
-		perms = PermutationUtil.getPermutationsOfLength(new int[]{5, 8}, 1);
+		long[] perms = PermutationUtil.getPermutationsOfLength2(new long[]{5, 8});
 		Assert.assertEquals(2, perms.length);
-		Assert.assertArrayEquals(perms, new int[]{5, 8});
+		Assert.assertArrayEquals(perms, new long[]{58, 85});
 
-		perms = PermutationUtil.getPermutationsOfLength(new int[]{5, 8, 9, 2}, 1);
-		Assert.assertEquals(4, perms.length);
-		Assert.assertArrayEquals(perms, new int[]{5, 8, 9, 2});
+		perms = PermutationUtil.getPermutationsOfLength2(new long[]{5, 8, 9});
+		Assert.assertEquals(6, perms.length);
+		Assert.assertArrayEquals(perms, new long[]{58, 59, 85, 89, 95, 98});
 
-		perms = PermutationUtil.getPermutationsOfLength(new int[]{5, 8, 9, 2}, 2);
+		perms = PermutationUtil.getPermutationsOfLength2(new long[]{5, 8, 9, 2});
 		Assert.assertEquals(12, perms.length);
+		Assert.assertArrayEquals(perms, new long[]{58, 59, 52, 85, 89, 82, 95, 98, 92, 25, 28, 29});
+
+		perms = PermutationUtil.getPermutationsOfLength2(new long[]{3, 53, 71});
+		Assert.assertEquals(6, perms.length);
+		Assert.assertArrayEquals(perms, new long[]{353, 371, 533, 5371, 713, 7153});
 
 	}
 }
