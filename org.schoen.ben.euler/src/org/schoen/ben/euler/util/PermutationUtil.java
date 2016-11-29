@@ -80,6 +80,24 @@ public class PermutationUtil {
 		return perms;
 	}
 
+	public static long[] getPermutationsOfLength2(long[] array) {
+		if(array.length < 2) {
+			throw new IllegalArgumentException("Het aantal getallen moet kleiner zijn dan 2");
+		}
+
+		int numberOfPerms = array.length * (array.length - 1);
+		int counter = 0;
+		long[] newArray = new long[numberOfPerms];
+		for(int j = 0; j <= array.length - 1; j++) {
+			for (int k = 0; k <= array.length - 1; k++) {
+				if(j == k)
+					continue;
+				newArray[counter++] = Long.valueOf(Long.valueOf(array[j]) + "" + Long.valueOf(array[k])).intValue();
+			}
+		}
+		return newArray;
+	}
+
 	private static int findHighestValidK(char[] letters) {
 		for(int i = letters.length - 2; i >= 0; i--) {
 			if(letters[i] < letters[i + 1])
