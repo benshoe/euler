@@ -22,11 +22,26 @@ public class VigenereDecoderTest {
 	}
 
 	@Test
-	public void testTabulaRecta() {
-		Map<Character, List<Character>> tabulaRecta = VigenereDecoder.getTabulaRecta();
+	public void testLowercaseTabulaRecta() {
+		testTabulaRecta(VigenereDecoder.getTabulaRectaLowercase());
+	}
+
+	@Test
+	public void testUppercaseTabulaRecta() {
+		testTabulaRecta(VigenereDecoder.getTabulaRectaUppercase());
+	}
+
+	private void testTabulaRecta(Map<Character, List<Character>> tabulaRecta) {
+		TextRotator rotator = new TextRotator();
 		for(Entry<Character, List<Character>> entry : tabulaRecta.entrySet()) {
-			System.out.print(entry.getKey());
-			System.out.println(" | " + entry.getValue());
+			Character key = entry.getKey();
+			List<Character> characters = entry.getValue();
+			System.out.print(key);
+			System.out.println(" | " + characters);
+			for(int i = 0; i < 26; i++) {
+				String s = rotator.rotateText(String.valueOf(key), i);
+				Assert.assertEquals(Character.toString(characters.get(i)), s);
+			}
 		}
 	}
 
@@ -36,5 +51,13 @@ public class VigenereDecoderTest {
 		String keyword = "zodiak";
 		String decoded = m_vigenereDecoder.decode(codedText, keyword);
 		Assert.assertEquals("ditiszeergeheim", decoded);
+	}
+
+	@Test
+	public void testSubstitutionUpperCase() {
+		String codedText = "CWWQSJDSUOERDWP";
+		String keyword = "ZODIAK";
+		String decoded = m_vigenereDecoder.decode(codedText, keyword);
+		Assert.assertEquals("DITISZEERGEHEIM", decoded);
 	}
 }

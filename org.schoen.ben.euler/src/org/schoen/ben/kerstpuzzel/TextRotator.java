@@ -1,5 +1,7 @@
 package org.schoen.ben.kerstpuzzel;
 
+import static java.lang.Character.isLowerCase;
+
 /**
  * Created by ben on 16-12-16.
  */
@@ -23,13 +25,12 @@ public class TextRotator {
             return ',';
         }
         int shift = c + pos;
-        if(isCapital(c)) {
-            shift = createValidUppercaseValue(shift);
+        if(isLowerCase(c)) {
+            shift = createValidLowercaseValue(shift);
             return Character.toChars(shift)[0];
         }
 
-        shift = createValidLowercaseValue(shift);
-
+        shift = createValidUppercaseValue(shift);
         return Character.toChars(shift)[0];
     }
 
@@ -44,17 +45,13 @@ public class TextRotator {
     }
 
     private int createValidUppercaseValue(int shift) {
-        while(shift > 91) {
+        while(shift > 90) {
             shift -= 26;
         }
         while(shift < 65) {
             shift += 26;
         }
         return shift;
-    }
-
-    private boolean isCapital(char c) {
-        return c >= 65 && c <= 91;
     }
 
     public void printRotatedText(String text) {
