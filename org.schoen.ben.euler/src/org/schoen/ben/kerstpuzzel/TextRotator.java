@@ -23,13 +23,38 @@ public class TextRotator {
             return ',';
         }
         int shift = c + pos;
+        if(isCapital(c)) {
+            shift = createValidUppercaseValue(shift);
+            return Character.toChars(shift)[0];
+        }
+
+        shift = createValidLowercaseValue(shift);
+
+        return Character.toChars(shift)[0];
+    }
+
+    private int createValidLowercaseValue(int shift) {
         while(shift > 122) {
             shift -= 26;
         }
         while(shift < 97) {
             shift += 26;
         }
-        return Character.toChars(shift)[0];
+        return shift;
+    }
+
+    private int createValidUppercaseValue(int shift) {
+        while(shift > 91) {
+            shift -= 26;
+        }
+        while(shift < 65) {
+            shift += 26;
+        }
+        return shift;
+    }
+
+    private boolean isCapital(char c) {
+        return c >= 65 && c <= 91;
     }
 
     public void printRotatedText(String text) {

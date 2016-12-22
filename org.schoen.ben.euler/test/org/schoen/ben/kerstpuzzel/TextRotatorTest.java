@@ -3,8 +3,6 @@ package org.schoen.ben.kerstpuzzel;
 import junit.framework.Assert;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by ben on 16-12-16.
  */
@@ -53,5 +51,11 @@ public class TextRotatorTest {
     public void rotateTextWithSpecialLetter() {
         String text = "ab,c";
         Assert.assertEquals("za,b", m_textRotator.rotateText(text, -1));
+    }
+
+    @Test
+    public void rotateTextWithCapitals() {
+        String text = "HAL";
+        Assert.assertEquals("IBM", m_textRotator.rotateText(text, 1));
     }
 }
