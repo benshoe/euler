@@ -89,7 +89,7 @@ public class PermutationUtilTest {
 	}
 
 	@Test
-	public void testGetPermutationsOfLength() throws Exception {
+	public void testGetPermutationsOfLength2() throws Exception {
 		long[] perms = PermutationUtil.getPermutationsOfLength2(new long[]{5, 8});
 		Assert.assertEquals(2, perms.length);
 		Assert.assertArrayEquals(perms, new long[]{58, 85});
@@ -105,6 +105,5 @@ public class PermutationUtilTest {
 		perms = PermutationUtil.getPermutationsOfLength2(new long[]{3, 53, 71});
 		Assert.assertEquals(6, perms.length);
 		Assert.assertArrayEquals(perms, new long[]{353, 371, 533, 5371, 713, 7153});
-
 	}
 }

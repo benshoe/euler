@@ -82,7 +82,7 @@ public class PermutationUtil {
 
 	public static long[] getPermutationsOfLength2(long[] array) {
 		if(array.length < 2) {
-			throw new IllegalArgumentException("Het aantal getallen moet kleiner zijn dan 2");
+			throw new IllegalArgumentException("Het aantal getallen moet groter zijn dan 2");
 		}
 
 		int numberOfPerms = array.length * (array.length - 1);
