@@ -23,28 +23,41 @@ public class CombinationUtil {
         }
     }
 
-    public static List<List<Integer>> findCombinations(int sum, int[] numbers) {
-        List<List<Integer>> combinations = new ArrayList<>();
+    public static Set<List<Integer>> findCombinations(int sum, int[] numbers) {
+        Set<List<Integer>> combinations = new HashSet<>();
         combinations.add(findCombinations(combinations, new ArrayList<>(), sum, numbers, 0));
         return combinations;
     }
 
-    private static List<Integer> findCombinations(List<List<Integer>> combinations, List<Integer> combination, int sum, int[] numbers, int checkFromIndex) {
-        if(sum == 0) {
-            combinations.add(combination);
+    private static List<Integer> findCombinations(Set<List<Integer>> combinations, List<Integer> combination, int amount, int[] numbers, int checkFromIndex) {
+        if(amount == 0) {
             return combination;
         }
-        if(sum < 0 || numbers.length == checkFromIndex) {
+        if(amount < 0 || numbers.length == checkFromIndex) {
             return Collections.EMPTY_LIST;
         }
         combination.add(numbers[checkFromIndex]);
-        List<Integer> withFirstNumber = findCombinations(combinations, combination, sum - numbers[checkFromIndex], numbers, checkFromIndex);
+        List<Integer> withFirstNumber = findCombinations(combinations, combination, amount - numbers[checkFromIndex], numbers, checkFromIndex);
+        combinations.add(withFirstNumber);
+
         combination = new ArrayList<>();
-        List<Integer> withoutFirstNumber = findCombinations(combinations, combination, sum, numbers, checkFromIndex + 1);
-        combination.addAll(withFirstNumber);
-        combination.addAll(withoutFirstNumber);
-        List<Integer> complete = new ArrayList<>(withFirstNumber);
-        complete.addAll(withoutFirstNumber);
-        return complete;
+        List<Integer> withoutFirstNumber = findCombinations(combinations, combination, amount, numbers, checkFromIndex + 1);
+        if(withoutFirstNumber.size() != 0) {
+            combinations.add(withoutFirstNumber);
+        }
+        return combination;
+    }
+
+    public static void printAll(int ind, int[] denom, int N, int[] vals){
+        if(N==0){
+            System.out.println(Arrays.toString(vals));
+            return;
+        }
+        if(ind == (denom.length))return;
+        int currdenom = denom[ind];
+        for(int i=0;i<=(N/currdenom);i++){
+            vals[ind] = i;
+            printAll(ind+1,denom,N-i*currdenom,vals);
+        }
     }
 }
