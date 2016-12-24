@@ -1,5 +1,7 @@
 package org.schoen.ben.euler;
 
+import org.schoen.ben.euler.util.CombinationUtil;
+
 /**
  * In England the currency is made up of pound, £, and pence, p, and there are eight coins in general circulation:
  *
@@ -15,30 +17,20 @@ package org.schoen.ben.euler;
  */
 public class Problem031 extends AbstractEulerProblem {
 
+	public static void main(String[] args) {
+		Problem031 problem031 = new Problem031("Test");
+		problem031.run();
+		System.out.println(problem031.getAnswer());
+	}
+
 	public Problem031(String answer) {
 		super(answer);
 	}
 
 	@Override
 	public void run() {
-		int answer = findCombinationsCount(200, new int[]{1, 2, 5, 10, 20, 50, 100, 200});
+		int answer = CombinationUtil.findCombinationsCount(200, new int[]{1, 2, 5, 10, 20, 50, 100, 200});
 		setAnswer(String.valueOf(answer));
-	}
-
-	private int findCombinationsCount(int amount, int coins[]) {
-		return findCombinationsCount(amount, coins, 0);
-	}
-
-	private int findCombinationsCount(int amount, int coins[], int checkFromIndex) {
-		if(amount == 0)
-			return 1;
-		else if(amount < 0 || coins.length == checkFromIndex)
-			return 0;
-		else {
-			int withFirstCoin = findCombinationsCount(amount - coins[checkFromIndex], coins, checkFromIndex);
-			int withoutFirstCoin = findCombinationsCount(amount, coins, checkFromIndex + 1);
-			return withFirstCoin + withoutFirstCoin;
-		}
 	}
 
 	@Override
