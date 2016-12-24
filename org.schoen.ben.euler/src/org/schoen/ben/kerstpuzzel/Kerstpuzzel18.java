@@ -1,7 +1,5 @@
 package org.schoen.ben.kerstpuzzel;
 
-import org.schoen.ben.euler.util.PermutationUtil;
-
 import java.util.Scanner;
 
 /**
