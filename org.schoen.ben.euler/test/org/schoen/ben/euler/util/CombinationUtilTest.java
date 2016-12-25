@@ -17,12 +17,6 @@ public class CombinationUtilTest {
     }
 
     @Test
-    public void test200Cent() {
-        int answer = CombinationUtil.findCombinationsCount(200, new int[]{1, 2, 5, 10, 20, 50, 100, 200});
-        Assert.assertEquals(73682, answer);
-    }
-
-    @Test
     public void test1Cent() {
         int answer = CombinationUtil.findCombinationsCount(200, new int[]{1});
         Assert.assertEquals(1, answer);
@@ -49,8 +43,19 @@ public class CombinationUtilTest {
     }
 
     @Test
-	public void printAll() {
-		CombinationUtil.printAll(0, new int[]{50,100}, 250, new int[]{50,100});
+	public void printAllTest() {
+		CombinationUtil.printAll(0, new int[]{50,100}, 250, new int[]{50, 100});
+    }
+
+	@Test
+    public void printAll200CentTest() {
+        CombinationUtil.printAll(0,  new int[]{1, 2, 5, 10, 20, 50, 100, 200}, 200, new int[]{1, 2, 5, 10, 20, 50, 100, 200});
+    }
+
+	@Test
+	public void test200Cent() {
+		int answer = CombinationUtil.findCombinationsCount(200, new int[]{1, 2, 5, 10, 20, 50, 100, 200});
+		Assert.assertEquals(73682, answer);
 	}
 
     @Test

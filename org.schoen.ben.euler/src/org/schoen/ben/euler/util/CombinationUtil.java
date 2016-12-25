@@ -7,7 +7,9 @@ import java.util.*;
  */
 public class CombinationUtil {
 
-    public static int findCombinationsCount(int amount, int coins[]) {
+	private static int m_counter;
+
+	public static int findCombinationsCount(int amount, int coins[]) {
         return findCombinationsCount(amount, coins, 0);
     }
 
@@ -48,16 +50,19 @@ public class CombinationUtil {
         return combination;
     }
 
-    public static void printAll(int ind, int[] denom, int N, int[] vals){
-        if(N==0){
-            System.out.println(Arrays.toString(vals));
-            return;
-        }
-        if(ind == (denom.length))return;
-        int currdenom = denom[ind];
-        for(int i=0;i<=(N/currdenom);i++){
-            vals[ind] = i;
-            printAll(ind+1,denom,N-i*currdenom,vals);
-        }
-    }
+	public static void printAll(int ind, int[] denom, int N, int[] vals) {
+		if(N == 0) {
+			m_counter++;
+			System.out.println(m_counter + Arrays.toString(vals));
+			return;
+		}
+		if(ind == (denom.length)) {
+			return;
+		}
+		int currdenom = denom[ind];
+		for(int i = 0; i <= (N / currdenom); i++) {
+			vals[ind] = i;
+			printAll(ind + 1, denom, N - i * currdenom, vals);
+		}
+	}
 }
