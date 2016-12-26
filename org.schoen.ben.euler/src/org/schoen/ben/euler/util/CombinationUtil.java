@@ -60,9 +60,33 @@ public class CombinationUtil {
 			return;
 		}
 		int currdenom = denom[ind];
+		if(currdenom == 0) {
+			throw new IllegalStateException("Divide by zero");
+		}
 		for(int i = 0; i <= (N / currdenom); i++) {
 			vals[ind] = i;
 			printAll(ind + 1, denom, N - i * currdenom, vals);
+		}
+	}
+
+	public static void findAllCombinations(int ind, int[] denom, int N, int[] vals, List<int[]> possibleArrays) {
+		if(N == 0) {
+			m_counter++;
+			//System.out.println(m_counter + Arrays.toString(vals));
+			int[] copy = vals.clone();
+			possibleArrays.add(copy);
+			return;
+		}
+		if(ind == (denom.length)) {
+			return;
+		}
+		int currdenom = denom[ind];
+		if(currdenom == 0) {
+			throw new IllegalStateException("Divide by zero");
+		}
+		for(int i = 0; i <= (N / currdenom); i++) {
+			vals[ind] = i;
+			findAllCombinations(ind + 1, denom, N - i * currdenom, vals, possibleArrays);
 		}
 	}
 }
