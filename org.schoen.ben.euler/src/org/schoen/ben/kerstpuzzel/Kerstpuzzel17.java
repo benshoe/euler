@@ -5,15 +5,15 @@ import java.util.Scanner;
 /**
  * Created by ben on 24-12-16.
  */
-public class Kerstpuzzel18 {
+public class Kerstpuzzel17 {
 
     private final int[] rood = new int[]{1, 4, 7, 10, 13, 16, 19, 22, 25};
     private final int[] groen = new int[]{2, 5, 8, 11, 14, 17, 20, 23, 26};
     private final int[] blauw = new int[]{3, 6, 9, 12, 15, 18, 21, 24};
 
     public static void main(String[] args) {
-        Kerstpuzzel18 kerstpuzzel18 = new Kerstpuzzel18();
-        kerstpuzzel18.run();
+        Kerstpuzzel17 kerstpuzzel17 = new Kerstpuzzel17();
+        kerstpuzzel17.run();
     }
 
     private void run() {
