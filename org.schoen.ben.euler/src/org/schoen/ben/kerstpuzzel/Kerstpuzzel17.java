@@ -45,14 +45,53 @@ public class Kerstpuzzel17 {
 				}
 			}
 
-			System.out.println("Rood");
-			printPossibilities(getallen[0], ROOD, r);
-			System.out.println("Groen");
-			printPossibilities(getallen[1], GROEN, g);
-			System.out.println("Blauw");
-			printPossibilities(getallen[2], BLAUW, b);
+			List<int[]> possibleRoodArrays = new ArrayList<>();
+			CombinationUtil.findAllCombinations(0, ROOD, getallen[0], ROOD.clone(), possibleRoodArrays);
+			List<int[]> possibleGroenArrays = new ArrayList<>();
+			CombinationUtil.findAllCombinations(0, GROEN, getallen[1], GROEN.clone(), possibleGroenArrays);
+			List<int[]> possibleBlauwArrays = new ArrayList<>();
+			CombinationUtil.findAllCombinations(0, BLAUW, getallen[2], BLAUW.clone(), possibleBlauwArrays);
+
+			possibleRoodArrays = removeImpossibleArrays(possibleRoodArrays, r);
+			possibleGroenArrays = removeImpossibleArrays(possibleGroenArrays, g);
+			possibleBlauwArrays = removeImpossibleArrays(possibleBlauwArrays, b);
+
+			List<String> roodLetters = getLetters(possibleRoodArrays, ROOD);
+			for(String letters : roodLetters) {
+				String[] rood = PermutationUtil.getPermutations(letters);
+				System.out.println("rood = " + Arrays.toString(rood));
+			}
+
+			printPossibilities(possibleRoodArrays, ROOD);
+			printPossibilities(possibleGroenArrays, GROEN);
+			printPossibilities(possibleBlauwArrays, BLAUW);
+
 			cont = continuePlaying(reader);
 		}
+	}
+
+	private List<String> getLetters(List<int[]> possibleRoodArrays, int[] denom) {
+		List<String> letterList = new ArrayList<>();
+		for(int[] array : possibleRoodArrays) {
+			StringBuilder sb = new StringBuilder();
+			for(int i = 0; i < array.length; i++) {
+				for(int j = 0; j < array[i]; j++) {
+					sb.append(ALPHABET.getLetter(denom[i]));
+				}
+			}
+			letterList.add(sb.toString());
+		}
+		return letterList;
+	}
+
+	private List<int[]> removeImpossibleArrays(List<int[]> arrays, int aantal) {
+		List<int[]> newArray = new ArrayList<>();
+		for(int[] array : arrays) {
+			if(aantal == foundValues(array)) {
+				newArray.add(array);
+			}
+		}
+		return newArray;
 	}
 
 	private boolean continuePlaying(Scanner reader) {
@@ -61,18 +100,14 @@ public class Kerstpuzzel17 {
 		return "J".equalsIgnoreCase(code);
 	}
 
-	private void printPossibilities(int sum, int[] denom, int aantal) {
-		List<int[]> possibleArrays = new ArrayList<>();
-		CombinationUtil.findAllCombinations(0, denom, sum, denom.clone(), possibleArrays);
+	private void printPossibilities(List<int[]> possibleArrays, int[] denom) {
 		for(int[] array : possibleArrays) {
-			if(aantal == foundValues(array)) {
-				for(int i = 0; i < array.length; i++) {
-					for(int j = 0; j < array[i]; j++) {
-						System.out.print(ALPHABET.getLetter(denom[i]));
-					}
+			for(int i = 0; i < array.length; i++) {
+				for(int j = 0; j < array[i]; j++) {
+					System.out.print(ALPHABET.getLetter(denom[i]));
 				}
-				System.out.println();
 			}
+			System.out.println();
 		}
 	}
 
