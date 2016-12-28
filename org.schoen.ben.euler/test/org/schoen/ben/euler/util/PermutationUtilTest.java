@@ -1,6 +1,9 @@
 package org.schoen.ben.euler.util;
 
+import junit.framework.*;
 import org.junit.*;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class PermutationUtilTest {
 
@@ -105,5 +108,12 @@ public class PermutationUtilTest {
 		perms = PermutationUtil.getPermutationsOfLength2(new long[]{3, 53, 71});
 		Assert.assertEquals(6, perms.length);
 		Assert.assertArrayEquals(perms, new long[]{353, 371, 533, 5371, 713, 7153});
+	}
+
+	@Test
+	public void testAmountOfPerms() {
+		String[] perms = PermutationUtil.getPermutations("OO");
+		Assert.assertEquals(1, perms.length);
+		Assert.assertEquals("OO", perms[0]);
 	}
 }
