@@ -77,7 +77,16 @@ public class PermutationUtil {
 			perms[counter] = String.valueOf(letters);
 			counter++;
 		}
-		return perms;
+		List<String> stringList = new ArrayList<>();
+		for(String s : perms) {
+			if(s != null) {
+				stringList.add(s);
+			}
+		}
+
+		perms = new String[stringList.size()];
+
+		return stringList.toArray(perms);
 	}
 
 	public static long[] getPermutationsOfLength2(long[] array) {

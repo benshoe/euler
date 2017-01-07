@@ -1,13 +1,15 @@
 package org.schoen.ben.euler.util;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ben on 24-12-16.
  */
 public class CombinationUtil {
 
-    public static int findCombinationsCount(int amount, int coins[]) {
+	private static int m_counter;
+
+	public static int findCombinationsCount(int amount, int coins[]) {
         return findCombinationsCount(amount, coins, 0);
     }
 
@@ -23,7 +25,68 @@ public class CombinationUtil {
         }
     }
 
-    public static List<List<Integer>> findCombinations(int i, int[] ints) {
-        return null;
+    public static Set<List<Integer>> findCombinations(int sum, int[] numbers) {
+        Set<List<Integer>> combinations = new HashSet<>();
+        combinations.add(findCombinations(combinations, new ArrayList<>(), sum, numbers, 0));
+        return combinations;
     }
+
+    private static List<Integer> findCombinations(Set<List<Integer>> combinations, List<Integer> combination, int amount, int[] numbers, int checkFromIndex) {
+        if(amount == 0) {
+            return combination;
+        }
+        if(amount < 0 || numbers.length == checkFromIndex) {
+            return Collections.EMPTY_LIST;
+        }
+        combination.add(numbers[checkFromIndex]);
+        List<Integer> withFirstNumber = findCombinations(combinations, combination, amount - numbers[checkFromIndex], numbers, checkFromIndex);
+        combinations.add(withFirstNumber);
+
+        combination = new ArrayList<>();
+        List<Integer> withoutFirstNumber = findCombinations(combinations, combination, amount, numbers, checkFromIndex + 1);
+        if(withoutFirstNumber.size() != 0) {
+            combinations.add(withoutFirstNumber);
+        }
+        return combination;
+    }
+
+	public static void printAll(int ind, int[] denom, int N, int[] vals) {
+		if(N == 0) {
+			m_counter++;
+			System.out.println(m_counter + Arrays.toString(vals));
+			return;
+		}
+		if(ind == (denom.length)) {
+			return;
+		}
+		int currdenom = denom[ind];
+		if(currdenom == 0) {
+			throw new IllegalStateException("Divide by zero");
+		}
+		for(int i = 0; i <= (N / currdenom); i++) {
+			vals[ind] = i;
+			printAll(ind + 1, denom, N - i * currdenom, vals);
+		}
+	}
+
+	public static void findAllCombinations(int ind, int[] denom, int N, int[] vals, List<int[]> possibleArrays) {
+		if(N == 0) {
+			m_counter++;
+			//System.out.println(m_counter + Arrays.toString(vals));
+			int[] copy = vals.clone();
+			possibleArrays.add(copy);
+			return;
+		}
+		if(ind == (denom.length)) {
+			return;
+		}
+		int currdenom = denom[ind];
+		if(currdenom == 0) {
+			throw new IllegalStateException("Divide by zero");
+		}
+		for(int i = 0; i <= (N / currdenom); i++) {
+			vals[ind] = i;
+			findAllCombinations(ind + 1, denom, N - i * currdenom, vals, possibleArrays);
+		}
+	}
 }
