@@ -2,6 +2,7 @@ package org.schoen.ben.kerstpuzzel;
 
 import org.schoen.ben.euler.util.*;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -16,12 +17,12 @@ public class Kerstpuzzel17 {
     public static final int[] BLAUW = new int[]{3, 6, 9, 12, 15, 18, 21, 24};
     private List<String> m_words = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Kerstpuzzel17 kerstpuzzel17 = new Kerstpuzzel17();
         kerstpuzzel17.run();
     }
 
-    private void run() {
+    private void run() throws IOException {
 		boolean cont = true;
 		while(cont) {
 			m_letterCombinationMap = new HashMap<>();
@@ -95,9 +96,13 @@ public class Kerstpuzzel17 {
 			remover.removeImprobableLetterCombinations(m_words);
 			m_words.sort(Comparator.naturalOrder());
             int counter = 0;
-            for (String word : m_words) {
+			FileWriter fileWriter = new FileWriter(code);
+			for (String word : m_words) {
                 System.out.println(counter++ + ": " + word);
-            }
+				fileWriter.append(word);
+				fileWriter.append("\n");
+			}
+            fileWriter.close();
 
 			cont = continuePlaying(reader);
 		}
