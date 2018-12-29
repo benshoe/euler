@@ -2,6 +2,7 @@ package org.schoen.ben.kerstpuzzel;
 
 import org.schoen.ben.euler.util.*;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -16,14 +17,16 @@ public class Kerstpuzzel17 {
     public static final int[] BLAUW = new int[]{3, 6, 9, 12, 15, 18, 21, 24};
     private List<String> m_words = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Kerstpuzzel17 kerstpuzzel17 = new Kerstpuzzel17();
         kerstpuzzel17.run();
     }
 
-    private void run() {
+    private void run() throws IOException {
 		boolean cont = true;
 		while(cont) {
+			m_letterCombinationMap = new HashMap<>();
+			m_words = new ArrayList<>();
 			Scanner reader = new Scanner(System.in);
 			String code = readCode();
 			int[] getallen = getValuesForRGB(reader);
@@ -59,9 +62,13 @@ public class Kerstpuzzel17 {
 			possibleGroenArrays = removeImpossibleArrays(possibleGroenArrays, g);
 			possibleBlauwArrays = removeImpossibleArrays(possibleBlauwArrays, b);
 
+
 			List<String> roodLetters = getLetters(possibleRoodArrays, ROOD);
 			List<String> groenLetters = getLetters(possibleGroenArrays, GROEN);
 			List<String> blauwLetters = getLetters(possibleBlauwArrays, BLAUW);
+            roodLetters = removeImprobableLetters(roodLetters);
+            groenLetters = removeImprobableLetters(groenLetters);
+            blauwLetters = removeImprobableLetters(blauwLetters);
             m_letterCombinationMap.put("R", new ArrayList<>());
             for(String letters : roodLetters) {
                 List<String> rood = Arrays.asList(PermutationUtil.getPermutations(letters));
@@ -84,15 +91,34 @@ public class Kerstpuzzel17 {
             }
 
 			findPossibilities(code);
-            m_words.sort(Comparator.naturalOrder());
+            ImprobableWordRemover remover = new ImprobableWordRemover();
+            remover.removeImprobableWords(m_words);
+			remover.removeImprobableLetterCombinations(m_words);
+			m_words.sort(Comparator.naturalOrder());
             int counter = 0;
-            for (String word : m_words) {
+			FileWriter fileWriter = new FileWriter(code);
+			for (String word : m_words) {
                 System.out.println(counter++ + ": " + word);
-            }
+				fileWriter.append(word);
+				fileWriter.append("\n");
+			}
+            fileWriter.close();
 
 			cont = continuePlaying(reader);
 		}
 	}
+
+	private List<String> removeImprobableLetters(List<String> possibleArrays) {
+        List<String> newList = new ArrayList<>(possibleArrays);
+        for (String s : possibleArrays) {
+            for (int i = 0; i < s.length(); i++) {
+                if(s.charAt(i) == 'Q' || s.charAt(i) == 'X') {
+                    newList.remove(s);
+                }
+            }
+        }
+        return newList;
+    }
 
     private void findPossibilities(String code) {
         for (String roodLetters : m_letterCombinationMap.get("R")) {
