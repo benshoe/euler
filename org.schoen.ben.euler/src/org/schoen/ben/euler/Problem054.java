@@ -37,7 +37,7 @@ public class Problem054 extends AbstractEulerProblem {
 
         // voor alle sets van kaarten
         BufferedReader bufferedReader = FileUtil.readFile("File054.txt");
-        List<String> dealtCards = bufferedReader.lines().flatMap(s -> Stream.of(s.split(REGEXP))).collect(Collectors.toList());
+        List<String> dealtCards = bufferedReader.lines().<String>flatMap(s -> Stream.of(s.split(REGEXP))).collect(Collectors.toList());
 
         int winsP1 = 0;
         int counter = 0;

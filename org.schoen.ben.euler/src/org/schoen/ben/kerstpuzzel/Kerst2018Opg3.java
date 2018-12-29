@@ -15,7 +15,8 @@ public class Kerst2018Opg3 {
     private void run() {
         List<String> combinaties = Arrays.asList(PermutationUtil.getPermutations("KERSTMINLX"));
 
-        int aantalKeerNul = 0;
+        long rekenles = 1;
+
         System.out.println("letters.size() = " + combinaties.size());
         for (String letter : combinaties) {
             int k = letter.indexOf('K');
@@ -28,8 +29,6 @@ public class Kerst2018Opg3 {
             int n = letter.indexOf('N');
             int l = letter.indexOf('L');
             if(k == 0 || r == 0 || m == 0 || t == 0 || l == 0) {
-                aantalKeerNul++;
-//                System.out.println("Een van de letters, k, r m, t of l is 0");
                 continue;
             }
 
@@ -81,6 +80,9 @@ public class Kerst2018Opg3 {
                 System.out.println(kerst + " = " + rekenen + " + " + met + " * " + tien + " - " + letters);
 
                 System.out.println("MINSTREEL = " + m+i+n+s+t+r+e+e+l);
+                System.out.println("REKENLES = " + r+e+k+e+n+l+e+s);
+                rekenles *= new Integer("" + r+e+k+e+n+l+e+s);
+                System.out.println("rekenles = " + rekenles);
             }
         }
     }

@@ -38,7 +38,7 @@ public class Problem042 extends AbstractEulerProblem {
 		}
 		List<Integer> triangleNumbers = getTriangleNumbers(1000);
 		System.out.println(triangleNumbers);
-		List<String> words = reader.lines().flatMap(s -> Stream.of(s.split(REGEXP))).collect(Collectors.toList());
+		List<String> words = reader.lines().<String>flatMap(s -> Stream.of(s.split(REGEXP))).collect(Collectors.toList());
 		int answer = 0;
 		for(String word : words) {
 			Integer wordValue = getWordValue(word.toUpperCase());

@@ -1,10 +1,10 @@
 package org.schoen.ben.euler;
 
+import org.schoen.ben.euler.util.*;
+
 import java.io.*;
 import java.util.*;
 import java.util.stream.*;
-
-import org.schoen.ben.euler.util.*;
 
 /**
  * For example, when the list is sorted into alphabetical order, COLIN,
@@ -31,7 +31,7 @@ public class Problem022 extends AbstractEulerProblem {
 		if(reader == null) {
 			System.out.println("Er ging iets fout met het lezen van de file...");
 		}
-		List<String> names = reader.lines().flatMap(s -> Stream.of(s.split(REGEXP))).sorted().collect(Collectors.toList());
+		List<String> names = reader.lines().<String>flatMap(s -> Stream.of(s.split(REGEXP))).sorted().collect(Collectors.toList());
 		int sum = 0;
 		for(String name : names) {
 			sum += calculate(name) * (names.indexOf(name));

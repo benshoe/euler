@@ -22,7 +22,7 @@ public class Problem059 extends AbstractEulerProblem {
 
 	@Override public void run() {
 		BufferedReader bufferedReader = FileUtil.readFile("File059.txt");
-		List<String> values = bufferedReader.lines().flatMap(s -> Stream.of(s.split(","))).collect(Collectors.toList());
+		List<String> values = bufferedReader.lines().<String>flatMap(s -> Stream.of(s.split(","))).collect(Collectors.toList());
 		System.out.println("values = " + values.size());
 		System.out.println("values = " + values);
 		byte[] intValues = new byte[values.size()];
