@@ -5,13 +5,6 @@ package org.schoen.ben.euler;
  *
  * What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
  *
- *
- * (a + b + c)^2 = a^2 + b^2 + c^2 + ab + ac + bc + ba + bc + ca + cb
- * 				 = a^2 + b^2 + c^2 + 2ab + 2ac + 2bc
- *
- * The difference with a^2 + b^2 + c^2 is therefore: 2ab + 2ac + 2bc
- * So all combinations multiplied is the answer!
- *
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since Oct 3, 2014
  */
@@ -23,14 +16,24 @@ public class Problem005 extends AbstractEulerProblem {
 
 	@Override
 	public void run() {
-		int sum = 0;
-		for(int i = 1; i <= 100; i++) {
-			for(int j = 1; j <= 100; j++) {
-				sum += i * j;
+		boolean found = false;
+		int number = 0;
+		while(!found) {
+			number++;
+			if(isDeelbaarDoor1tot20(number)) {
+				found = true;
 			}
-			sum -= i * i;
 		}
-		setAnswer(String.valueOf(sum));
+		setAnswer(String.valueOf(number));
+	}
+
+	private boolean isDeelbaarDoor1tot20(int number) {
+		for(int i = 1; i <= 20; i++) {
+			if(number % i != 0) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
