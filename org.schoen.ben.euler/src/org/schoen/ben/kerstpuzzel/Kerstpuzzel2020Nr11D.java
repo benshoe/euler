@@ -4,10 +4,10 @@ import java.util.*;
 
 import org.schoen.ben.euler.util.*;
 
-public class Kerstpuzzel2020Nr11 {
+public class Kerstpuzzel2020Nr11D {
 
 	public static void main(String[] args) {
-		Kerstpuzzel2020Nr11 kerstpuzzel2020Nr11 = new Kerstpuzzel2020Nr11();
+		Kerstpuzzel2020Nr11D kerstpuzzel2020Nr11 = new Kerstpuzzel2020Nr11D();
 		kerstpuzzel2020Nr11.run();
 	}
 

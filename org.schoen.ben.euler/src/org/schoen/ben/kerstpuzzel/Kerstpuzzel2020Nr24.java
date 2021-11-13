@@ -8,10 +8,10 @@ import java.util.*;
  * @author <a href="mailto:benshoe@gmail.com">Ben Schoen</a>
  * @since 31-12-20.
  */
-public class Kerstpuzzel2020Nr13 {
+public class Kerstpuzzel2020Nr24 {
 
 	public static void main(String[] args) {
-		Kerstpuzzel2020Nr13 nr13 = new Kerstpuzzel2020Nr13();
+		Kerstpuzzel2020Nr24 nr13 = new Kerstpuzzel2020Nr24();
 		nr13.run();
 	}
 
@@ -39,9 +39,6 @@ public class Kerstpuzzel2020Nr13 {
 			getal12, getal13, getal14, getal15, getal16, getal17, getal18);
 
 		getallen.stream().map(BigInteger::longValue).peek(aLong -> System.out.println("aLong = " + LocalDateTime.ofEpochSecond(aLong, 0, ZoneOffset.UTC))).count();
-		//LocalDateTime localDateTime = LocalDateTime.ofEpochSecond(getal01.longValue(), 0, ZoneOffset.UTC);
-		//System.out.println("localDateTime = " + localDateTime);
-
 	}
 
 }
